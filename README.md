@@ -70,3 +70,7 @@ Xでの宣伝。
 ・Google Maps JavaScript API
 ・Google Places API
 ・Google Geolocation API
+
+### 画面推移図
+Figma
+https://www.figma.com/file/1Brgrt9uEbXL2sZP4NRs4I/%E7%84%A1%E9%A1%8C?type=design&node-id=0%3A1&mode=design&t=Uvb53H2hEAJ9s1es-1
