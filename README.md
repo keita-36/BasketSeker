@@ -50,6 +50,7 @@ Xでの宣伝。
    タイトル、日時、場所、内容をイベントとして登録できるようにする。
 ・イベントに参加、キャンセルができる機能
 ・チャット機能にて参加者同士でやり取りができるようにする
+・チャットがあった際通知する機能
 ・イベント一覧機能
 ・イベント詳細検索
 
@@ -59,14 +60,19 @@ Xでの宣伝。
 
 
 ### 本リリース
-・プロフィール詳細機能
+・プロフィール機能
 　　プレイ動画を投稿できるようにし、レベル感を共有できるようにする
 
 ・ランキング機能
   　参加数、イベント作成数、勝率に応じて
+・対戦結果を入力する機能
 
 ■ 機能の実装方針予定
 ゴール検索系
 ・Google Maps JavaScript API
 ・Google Places API
 ・Google Geolocation API
+
+### 画面推移図
+Figma
+https://www.figma.com/file/1Brgrt9uEbXL2sZP4NRs4I/%E7%84%A1%E9%A1%8C?type=design&node-id=0%3A1&mode=design&t=Uvb53H2hEAJ9s1es-1
