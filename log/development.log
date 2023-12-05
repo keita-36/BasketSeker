@@ -7,3 +7,33 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 20ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 7284)
 
 
+Started GET "/" for ::1 at 2023-12-05 13:52:50 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering application/top.html.erb within layouts/application
+  Rendered application/top.html.erb within layouts/application (Duration: 0.4ms | Allocations: 279)
+  Rendered layout layouts/application.html.erb (Duration: 231.0ms | Allocations: 75869)
+Completed 500 Internal Server Error in 238ms (ActiveRecord: 0.0ms | Allocations: 79773)
+
+
+  
+ActionView::Template::Error (The asset "logo.png" is not present in the asset pipeline.
+):
+    16:     <div class="navbar">
+    17:       <div class="h-20 flex-1">
+    18:         <a href="#">
+    19:           <img src="<%= asset_path('logo.png') %>" alt="BasketSeker" style="width: 200px; height: auto;">
+    20:         </a>
+    21:       </div>
+    22:       <div class="h-20 flex-none">
+  
+app/views/layouts/application.html.erb:19
+Started GET "/" for ::1 at 2023-12-05 13:53:19 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering application/top.html.erb within layouts/application
+  Rendered application/top.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 18391)
+Completed 200 OK in 25ms (Views: 25.1ms | ActiveRecord: 0.0ms | Allocations: 18704)
+
+
