@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BasketSeker</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+<head>
+  <title>App4</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+
+<body>
+  <header class="h-20 flex items-center justify-between sticky top-0 bg-accent">
+    <div class="navbar">
+      <div class="h-20 flex-1">
+        <a href="#">
+          <img src="<%= asset_path('logo.png') %>" alt="BasketSeker" style="width: 200px; height: auto;">
+        </a>
+      </div>
+      <div class="h-20 flex-none">
+        <ul class="menu menu-horizontal px-1">
+          <li><a class="mt-2">ログイン</a></li>
+          <li>
+            <button class="btn btn-square btn-ghost">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="inline-block w-9 h-9 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <%= yield %>
+  <footer class="fixed bottom-0 w-full footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <nav class="grid grid-flow-col gap-4">
+      <a class="link link-hover">利用規約</a>
+      <a class="link link-hover">プライバシーポリシー</a>
+    </nav>
+  </footer>
+</body>
+
 </html>
