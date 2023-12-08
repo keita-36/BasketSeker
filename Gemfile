@@ -33,6 +33,17 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
+#環境変数を管理する
+gem "dotenv-rails"
+
+gem "google_places"
+
+#HTTP および REST クライアント
+gem 'rest-client'
+
+#デバック用
+gem 'pry-rails'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
