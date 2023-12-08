@@ -64,3 +64,178 @@ Processing by StaticPagesController#top as HTML
 Completed 200 OK in 64ms (Views: 57.6ms | ActiveRecord: 0.0ms | Allocations: 29413)
 
 
+  [1m[35m (26.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateParks (20231208122701)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying NOT NULL, "postal_code" character varying, "address" character varying, "opening_hours" character varying, "web_site" character varying, "latitude" decimal(10,7) NOT NULL, "longitude" decimal(10,7) NOT NULL, "place_id" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231208122701"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-12-08 12:28:10.820004"], ["updated_at", "2023-12-08 12:28:10.820004"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPark Load (0.8ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJzxU4dQaMGGARqVFTClYRMLQ"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (2.1ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "神田橋公園"], ["postal_code", "101-0054"], ["address", " 東京都千代田区神田錦町１丁目２９"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.6896535"], ["longitude", "139.763974"], ["place_id", "ChIJzxU4dQaMGGARqVFTClYRMLQ"], ["created_at", "2023-12-08 12:38:28.359621"], ["updated_at", "2023-12-08 12:38:28.359621"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (1.0ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJqazH0DyPGGARvzFE81Zs-ss"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.6ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "八広公園"], ["postal_code", "131-0041"], ["address", " 東京都墨田区八広５丁目１０−１４"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.7251058"], ["longitude", "139.824619"], ["place_id", "ChIJqazH0DyPGGARvzFE81Zs-ss"], ["created_at", "2023-12-08 12:38:29.223096"], ["updated_at", "2023-12-08 12:38:29.223096"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.8ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJ3Tnj69_qGGARx3wBzYhDjRw"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "北五公園"], ["postal_code", "335-0001"], ["address", " 埼玉県蕨市北町５丁目５"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.8323912"], ["longitude", "139.6715179"], ["place_id", "ChIJ3Tnj69_qGGARx3wBzYhDjRw"], ["created_at", "2023-12-08 12:38:30.122669"], ["updated_at", "2023-12-08 12:38:30.122669"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.9ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJU6u_VRDvGGARSdTcVQr1aTE"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "むくのき公園"], ["postal_code", "202-0022"], ["address", " 東京都西東京市柳沢２丁目３−１２"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.7229224"], ["longitude", "139.5562635"], ["place_id", "ChIJU6u_VRDvGGARSdTcVQr1aTE"], ["created_at", "2023-12-08 12:38:31.113373"], ["updated_at", "2023-12-08 12:38:31.113373"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.9ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJO6J6XW2FGGARVnwLHb-jHf4"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "東金町四丁目平成公園"], ["postal_code", "125-0041"], ["address", " 東京都葛飾区東金町４丁目３５−１"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.7755429"], ["longitude", "139.8739461"], ["place_id", "ChIJO6J6XW2FGGARVnwLHb-jHf4"], ["created_at", "2023-12-08 12:38:31.806868"], ["updated_at", "2023-12-08 12:38:31.806868"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.9ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJpaS1SdWcGGARN_MCO-xnGc4"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "名戸ヶ谷第六公園"], ["postal_code", "277-0084"], ["address", " 千葉県柏市新柏４丁目"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.8442055"], ["longitude", "139.977393"], ["place_id", "ChIJpaS1SdWcGGARN_MCO-xnGc4"], ["created_at", "2023-12-08 12:38:32.774580"], ["updated_at", "2023-12-08 12:38:32.774580"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJM2AgAgOJGGARr2dF17boOlg"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "豊住公園"], ["postal_code", "135-0016"], ["address", " 東京都江東区東陽６丁目１"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.6743748"], ["longitude", "139.8109096"], ["place_id", "ChIJM2AgAgOJGGARr2dF17boOlg"], ["created_at", "2023-12-08 12:38:33.582857"], ["updated_at", "2023-12-08 12:38:33.582857"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.6ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJYW1KgqzvGGARfoS4V-lMPfk"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "中町北公園"], ["postal_code", "180-0006"], ["address", " 東京都武蔵野市中町３丁目１０−１０ ライオンズガーデン三鷹"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.7109975"], ["longitude", "139.5667118"], ["place_id", "ChIJYW1KgqzvGGARfoS4V-lMPfk"], ["created_at", "2023-12-08 12:38:34.631976"], ["updated_at", "2023-12-08 12:38:34.631976"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.6ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJ0W0RnRSJGGARp9WWdGOssqk"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "油堀川公園"], ["postal_code", "135-0048"], ["address", " 東京都江東区門前仲町１丁目２０−２０"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.6747578"], ["longitude", "139.7951388"], ["place_id", "ChIJ0W0RnRSJGGARp9WWdGOssqk"], ["created_at", "2023-12-08 12:38:35.416760"], ["updated_at", "2023-12-08 12:38:35.416760"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJs2Bgv5bmGGARwObc-Um_hVA"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "山王南公園"], ["postal_code", "187-0045"], ["address", " 東京都小平市学園西町３丁目３０−１３"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.7263311"], ["longitude", "139.4709876"], ["place_id", "ChIJs2Bgv5bmGGARwObc-Um_hVA"], ["created_at", "2023-12-08 12:38:36.203442"], ["updated_at", "2023-12-08 12:38:36.203442"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJ0THGsRnuGGARODTCm0aTTcI"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.8ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "杉並区立松庵公園"], ["postal_code", "167-0054"], ["address", " 東京都杉並区松庵１丁目１４−２２"], ["opening_hours", nil], ["web_site", nil], ["latitude", "35.6969316"], ["longitude", "139.5921293"], ["place_id", "ChIJ0THGsRnuGGARODTCm0aTTcI"], ["created_at", "2023-12-08 12:38:37.055700"], ["updated_at", "2023-12-08 12:38:37.055700"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Load (0.6ms)[0m  [1m[34mSELECT "parks".* FROM "parks" WHERE "parks"."place_id" = $1 LIMIT $2[0m  [["place_id", "ChIJta6dyFDKGGARfXDEFp5sh3A"], ["LIMIT", 1]]
+  ↳ lib/tasks/fetch_parks.rake:18:in `get_detail_data'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mPark Create (0.7ms)[0m  [1m[32mINSERT INTO "parks" ("name", "postal_code", "address", "opening_hours", "web_site", "latitude", "longitude", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["name", "花彦西公園"], ["postal_code", "347-0014"], ["address", " 埼玉県加須市川口２丁目"], ["opening_hours", nil], ["web_site", nil], ["latitude", "36.1124719"], ["longitude", "139.6586012"], ["place_id", "ChIJta6dyFDKGGARfXDEFp5sh3A"], ["created_at", "2023-12-08 12:38:37.974435"], ["updated_at", "2023-12-08 12:38:37.974435"]]
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/fetch_parks.rake:57:in `block (3 levels) in <main>'
+Started GET "/" for ::1 at 2023-12-08 21:39:08 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 40.7ms | Allocations: 23981)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 24083)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 0.0ms | Allocations: 27876)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `park' for #<ActionView::Base:0x0000000000af00>):
+    74:                         addMarker({
+    75:                             lat: < %= park.latitude % > ,
+    76:                             lng: < %= park.longitude % > ,
+    77:                             name: '<%= park.name %>'
+    78:                         }); <
+    79:                     %
+    80:                     end % >
+  
+app/views/static_pages/top.html.erb:77
+Started GET "/" for ::1 at 2023-12-08 21:41:27 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1960)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2049)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2822)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    68:                 });
+    69:     
+    70:                 // 各公園に対してマーカーを表示
+    71:                 <% @parks.each do |park| %>
+    72:                     addMarker({
+    73:                         lat: <%= park.latitude %>,
+    74:                         lng: <%= park.longitude %>,
+  
+app/views/static_pages/top.html.erb:71
+Started GET "/" for ::1 at 2023-12-08 21:41:44 +0900
+Processing by StaticPagesController#top as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 415)
+
+
+  
+NameError (uninitialized constant StaticPagesController::Post):
+  
+app/controllers/static_pages_controller.rb:3:in `top'
+Started PUT "/__web_console/repl_sessions/1944198618fb3e42dcd547eb8aa18f1a" for ::1 at 2023-12-08 21:42:06 +0900
+Started PUT "/__web_console/repl_sessions/1944198618fb3e42dcd547eb8aa18f1a" for ::1 at 2023-12-08 21:42:07 +0900
+Started PUT "/__web_console/repl_sessions/1944198618fb3e42dcd547eb8aa18f1a" for ::1 at 2023-12-08 21:42:08 +0900
+Started GET "/" for ::1 at 2023-12-08 21:42:23 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (1.0ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 14.3ms | Allocations: 9374)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 11979)
+Completed 200 OK in 18ms (Views: 9.7ms | ActiveRecord: 7.2ms | Allocations: 13141)
+
+
