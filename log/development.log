@@ -37,3 +37,30 @@ Processing by StaticPagesController#top as HTML
 Completed 200 OK in 25ms (Views: 25.1ms | ActiveRecord: 0.0ms | Allocations: 18704)
 
 
+Started GET "/" for ::1 at 2023-12-08 21:18:26 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 30.9ms | Allocations: 19065)
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 21932)
+Completed 200 OK in 41ms (Views: 36.7ms | ActiveRecord: 0.0ms | Allocations: 25800)
+
+
+Started GET "/" for ::1 at 2023-12-08 21:20:24 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 2.5ms | Allocations: 794)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3269)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 4064)
+
+
+Started GET "/" for ::1 at 2023-12-08 21:21:13 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 48.8ms | Allocations: 22734)
+  Rendered layout layouts/application.html.erb (Duration: 54.3ms | Allocations: 25547)
+Completed 200 OK in 64ms (Views: 57.6ms | ActiveRecord: 0.0ms | Allocations: 29413)
+
+
