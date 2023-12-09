@@ -36,6 +36,7 @@ gem "jbuilder"
 #環境変数を管理する
 gem "dotenv-rails"
 
+#API
 gem "google_places"
 
 #HTTP および REST クライアント
@@ -43,6 +44,8 @@ gem 'rest-client'
 
 #デバック用
 gem 'pry-rails'
+
+gem 'devise'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

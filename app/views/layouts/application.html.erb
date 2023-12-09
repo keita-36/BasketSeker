@@ -3,7 +3,7 @@
 
 <head>
   <title>BasketSeker</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -14,14 +14,20 @@
 <body>
   <header class="h-20 flex items-center justify-between sticky top-0 bg-accent">
     <div class="navbar">
-      <div class="h-20 flex-1">
+      <div class="flex-1">
         <a href="#">
-          <img src="<%= asset_path('logo.png') %>" alt="BasketSeker" style="width: 200px; height: auto;">
+          <%= image_tag 'logo.png', class: 'm-auto w-16 h-16' %>
         </a>
       </div>
       <div class="h-20 flex-none">
         <ul class="menu menu-horizontal px-1">
-          <li><a class="mt-2">ログイン</a></li>
+          <% if user_signed_in? %>
+            <li>
+              <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %>
+            </li>
+          <%else%>
+            <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
+          <%end%>
           <li>
             <button class="btn btn-square btn-ghost">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
