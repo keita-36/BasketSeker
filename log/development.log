@@ -239,3 +239,411 @@ Processing by StaticPagesController#top as HTML
 Completed 200 OK in 18ms (Views: 9.7ms | ActiveRecord: 7.2ms | Allocations: 13141)
 
 
+Started GET "/" for ::1 at 2023-12-09 22:02:39 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (0.9ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 62.7ms | Allocations: 34659)
+  Rendered layout layouts/application.html.erb (Duration: 73.4ms | Allocations: 37490)
+Completed 200 OK in 80ms (Views: 69.5ms | ActiveRecord: 5.5ms | Allocations: 41959)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20231209130445)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "avatar" character varying, "play_video" character varying, "profile" text, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(7969250185964013975)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20231209130445)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "avatar" character varying, "play_video" character varying, "profile" text, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (39.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BasketSeker_development"[0m
+  [1m[35m (25.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BasketSeker_test"[0m
+  [1m[35m (162.5ms)[0m  [1m[35mCREATE DATABASE "BasketSeker_development" ENCODING = 'unicode'[0m
+  [1m[35m (65.7ms)[0m  [1m[35mCREATE DATABASE "BasketSeker_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateParks (20231208122701)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying NOT NULL, "postal_code" character varying, "address" character varying, "opening_hours" character varying, "web_site" character varying, "latitude" decimal(10,7) NOT NULL, "longitude" decimal(10,7) NOT NULL, "place_id" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231208122701"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20231209130445)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "avatar" character varying, "play_video" character varying, "profile" text, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231209130445"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-12-09 13:06:38.591676"], ["updated_at", "2023-12-09 13:06:38.591676"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7969250185964013975)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-12-09 22:11:35 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (2.4ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 51.6ms | Allocations: 27690)
+  Rendered layout layouts/application.html.erb (Duration: 56.3ms | Allocations: 30953)
+Completed 200 OK in 65ms (Views: 55.6ms | ActiveRecord: 2.4ms | Allocations: 35875)
+
+
+Started GET "/" for ::1 at 2023-12-09 22:12:11 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (0.5ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2015)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4773)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.5ms | Allocations: 5605)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-09 22:12:16 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 8.8ms | Allocations: 4119)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 6349)
+Completed 200 OK in 27ms (Views: 11.6ms | ActiveRecord: 7.0ms | Allocations: 16083)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:12:18 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 237)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2669)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4552)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 5923)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:12:20 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 854)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 3489)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 5314)
+Completed 422 Unprocessable Entity in 16ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 8552)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-09 22:13:12 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1204)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3346)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 4273)
+
+
+Started GET "/users/password/new" for ::1 at 2023-12-09 22:13:14 +0900
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/passwords/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 228)
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 645)
+  Rendered users/passwords/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2029)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4257)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 5581)
+
+
+Started GET "/" for ::1 at 2023-12-09 22:17:24 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (9.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 64.8ms | Allocations: 23339)
+  Rendered layout layouts/application.html.erb (Duration: 69.9ms | Allocations: 26653)
+Completed 200 OK in 78ms (Views: 61.9ms | ActiveRecord: 9.7ms | Allocations: 31201)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-09 22:17:26 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 3253)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 5473)
+Completed 200 OK in 33ms (Views: 11.0ms | ActiveRecord: 6.9ms | Allocations: 14909)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:17:28 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 237)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2669)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4552)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 5932)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:17:30 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 854)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3489)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 5315)
+Completed 422 Unprocessable Entity in 17ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 8572)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:24 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 225)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2504)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 4724)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.0ms | Allocations: 6241)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:25 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1625)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3458)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 4321)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:26 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1635)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3475)
+Completed 200 OK in 55ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 4334)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:26 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1633)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3472)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 4336)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:26 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1626)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3459)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 4309)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:27 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1625)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3459)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 4330)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:30:27 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1625)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3458)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 4311)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:30:32 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 1.4ms | Allocations: 728)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 3352)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 5177)
+Completed 422 Unprocessable Entity in 39ms (Views: 14.0ms | ActiveRecord: 8.6ms | Allocations: 10414)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:30:48 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 392)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2506)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 4331)
+Completed 422 Unprocessable Entity in 432ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 10915)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:32:29 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 726)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 3349)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 5174)
+Completed 422 Unprocessable Entity in 14ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 7268)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-09 22:32:32 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1656)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 3869)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 5122)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:32:36 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1625)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3458)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 4320)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:35:24 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 225)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2505)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 6099)
+Completed 200 OK in 24ms (Views: 22.1ms | ActiveRecord: 0.0ms | Allocations: 7619)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:36:51 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 225)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2506)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4725)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 6246)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:36:55 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 728)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 11.0ms | Allocations: 3362)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 5195)
+Completed 422 Unprocessable Entity in 18ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 7641)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:37:24 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 248)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 59.6ms | Allocations: 25045)
+  Rendered layout layouts/application.html.erb (Duration: 61.6ms | Allocations: 27455)
+Completed 200 OK in 85ms (Views: 68.1ms | ActiveRecord: 6.6ms | Allocations: 40399)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:37:26 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 873)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3508)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 5334)
+Completed 422 Unprocessable Entity in 15ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 8751)
+
+
+Started GET "/" for ::1 at 2023-12-09 22:37:30 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (1.2ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:71
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 23.3ms | Allocations: 2214)
+  Rendered layout layouts/application.html.erb (Duration: 26.6ms | Allocations: 4665)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 1.2ms | Allocations: 5712)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-12-09 22:37:31 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2090)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4318)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 5764)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:37:32 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1625)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 3459)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 4327)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:37:34 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered /Users/keita/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/devise-4.9.3/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 726)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 3348)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 5173)
+Completed 422 Unprocessable Entity in 13ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 7275)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-09 22:39:45 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2139)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 4358)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 5899)
+
+
+Started POST "/users" for ::1 at 2023-12-09 22:39:46 +0900
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3298)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5123)
+Completed 422 Unprocessable Entity in 16ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 7565)
+
+
