@@ -1,4 +1,4 @@
-<main class="mb-36 text-center">
+<main class="mb-36 text-center z-10">
     <div class="text-center w-40 h-40 mx-auto relative">
         <%= image_tag 'logo.png', class: 'mb-0 w-56 h-56' %>
         <span class="absolute top-40 right-0.5">サービスについて</span>
@@ -42,15 +42,8 @@
     </div>
     <br>
     <br>
-    <div id='map'></div>
+    <div id='map' class='h-96 w-full relative'></div>
 
-    <style>
-        #map {
-            height: 500px;
-            width: 100%; /* マップを横幅いっぱいに広げる */
-        }
-    </style>
-    
     <script>
         let map;
     
@@ -64,7 +57,13 @@
                 // 取得した位置情報を中心に表示
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: LatLng,
-                    zoom: 15
+                    zoom: 15,
+                    gestureHandling: 'cooperative',
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                        position: google.maps.ControlPosition.TOP_LEFT,
+                        mapTypeIds: ['roadmap', 'terrain']
+                    }
                 });
     
                 // 各公園に対してマーカーを表示

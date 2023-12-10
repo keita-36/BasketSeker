@@ -647,3 +647,15 @@ Processing by Devise::RegistrationsController#create as TURBO_STREAM
 Completed 422 Unprocessable Entity in 16ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 7565)
 
 
+Started GET "/" for ::1 at 2023-12-10 21:09:25 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (0.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:70
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 82.4ms | Allocations: 27839)
+  Rendered layout layouts/application.html.erb (Duration: 87.0ms | Allocations: 31003)
+Completed 200 OK in 96ms (Views: 88.1ms | ActiveRecord: 0.7ms | Allocations: 35925)
+
+
