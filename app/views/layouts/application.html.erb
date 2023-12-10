@@ -12,10 +12,10 @@
 </head>
 
 <body>
-  <header class="h-20 flex items-center justify-between sticky top-0 bg-accent">
+  <header class="h-20 flex items-center justify-between sticky top-0 bg-accent z-20">
     <div class="navbar">
       <div class="flex-1">
-        <a href="#">
+        <a href=#>
           <%= image_tag 'logo.png', class: 'm-auto w-16 h-16' %>
         </a>
       </div>
@@ -29,25 +29,48 @@
             <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
           <%end%>
           <li>
-            <button class="btn btn-square btn-ghost">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                class="inline-block w-9 h-9 stroke-current">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                </path>
-              </svg>
-            </button>
+            <div class="drawer drawer-end">
+              <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+              <div class="drawer-content">
+                <!-- Page content here -->
+                <label for="my-drawer-4" class="drawer-button btn btn-square btn-ghost ">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="inline-block w-9 h-9 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                  </svg>
+                </label>
+              </div>  
+              <div class="drawer-side">
+                <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+                <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                  <!-- Sidebar content here -->
+                  <li><%= link_to "トップページ", root_path, class: "mt-2" %></li>
+                  <% if user_signed_in? %>
+                    <li>
+                      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %>
+                    </li>
+                  <%else%>
+                    <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
+                  <%end%>
+                </ul>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </header>
+  
   <%= yield %>
+
   <footer class="fixed bottom-0 w-full footer footer-center p-10 bg-base-200 text-base-content rounded">
     <nav class="grid grid-flow-col gap-4">
       <a class="link link-hover">利用規約</a>
       <a class="link link-hover">プライバシーポリシー</a>
     </nav>
   </footer>
+
 </body>
 
 </html>
