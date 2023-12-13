@@ -4711,30 +4711,342 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.9ms | Allocations: 7716)
 
 
-Started GET "/events" for ::1 at 2023-12-13 09:03:46 +0900
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by EventsController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 9], ["OFFSET", 0]]
-  ↳ app/views/events/index.html.erb:12
-  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
-  ↳ app/views/events/index.html.erb:12
-  [1m[36mEvent Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
-  ↳ app/views/events/index.html.erb:27
-  Rendered events/index.html.erb within layouts/application (Duration: 42.4ms | Allocations: 20988)
-  Rendered layout layouts/application.html.erb (Duration: 117.8ms | Allocations: 52295)
-Completed 200 OK in 131ms (Views: 98.8ms | ActiveRecord: 23.3ms | Allocations: 58765)
-
-
-Started GET "/" for ::1 at 2023-12-13 09:03:53 +0900
+Started GET "/" for ::1 at 2023-12-13 10:53:12 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by StaticPagesController#top as HTML
   Rendering layout layouts/application.html.erb
   Rendering static_pages/top.html.erb within layouts/application
-  [1m[36mPark Load (0.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  [1m[36mPark Load (44.7ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
   ↳ app/views/static_pages/top.html.erb:70
-  Rendered static_pages/top.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2142)
-  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 4364)
-Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 0.7ms | Allocations: 5387)
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 131.3ms | Allocations: 39829)
+  Rendered layout layouts/application.html.erb (Duration: 136.4ms | Allocations: 44195)
+Completed 200 OK in 145ms (Views: 93.5ms | ActiveRecord: 44.7ms | Allocations: 48848)
+
+
+Started GET "/events" for ::1 at 2023-12-13 10:53:15 +0900
+Processing by EventsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (6.1ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 9], ["OFFSET", 0]]
+  ↳ app/views/events/index.html.erb:12
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/events/index.html.erb:12
+  [1m[36mEvent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+  ↳ app/views/events/index.html.erb:27
+  Rendered events/index.html.erb within layouts/application (Duration: 53.7ms | Allocations: 20722)
+  Rendered layout layouts/application.html.erb (Duration: 60.2ms | Allocations: 24542)
+Completed 200 OK in 72ms (Views: 48.1ms | ActiveRecord: 15.0ms | Allocations: 26962)
+
+
+Started GET "/events/10" for ::1 at 2023-12-13 10:53:18 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2119)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 5856)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.4ms | Allocations: 7356)
+
+
+Started GET "/events/9" for ::1 at 2023-12-13 10:53:22 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 4490)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.8ms | Allocations: 5260)
+
+
+Started GET "/events/3" for ::1 at 2023-12-13 10:53:31 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 4473)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.9ms | Allocations: 5254)
+
+
+Started GET "/events/10" for ::1 at 2023-12-13 10:53:43 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4466)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.4ms | Allocations: 5236)
+
+
+Started GET "/events/9" for ::1 at 2023-12-13 10:53:45 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 4459)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms | Allocations: 5240)
+
+
+Started GET "/events/8" for ::1 at 2023-12-13 10:53:48 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mEvent Load (3.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 4478)
+Completed 200 OK in 31ms (Views: 24.9ms | ActiveRecord: 3.9ms | Allocations: 5247)
+
+
+Started GET "/events/10" for ::1 at 2023-12-13 10:54:37 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4475)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 5244)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:23:19 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 738)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 4476)
+Completed 200 OK in 66ms (Views: 16.4ms | ActiveRecord: 12.6ms | Allocations: 8157)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:23:59 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 929)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 6750)
+Completed 200 OK in 32ms (Views: 28.2ms | ActiveRecord: 0.9ms | Allocations: 8109)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:24:30 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:6
+  Rendered events/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 923)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 5252)
+Completed 200 OK in 16ms (Views: 12.0ms | ActiveRecord: 0.9ms | Allocations: 6609)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:25:11 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:6
+  Rendered events/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 925)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 5229)
+Completed 200 OK in 13ms (Views: 10.1ms | ActiveRecord: 0.8ms | Allocations: 6586)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:25:34 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:6
+  Rendered events/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 5217)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.6ms | Allocations: 6574)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:25:34 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:6
+  Rendered events/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 4476)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.9ms | Allocations: 5244)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:25:40 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:6
+  Rendered events/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 925)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 5227)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 6587)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:26:15 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 157)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 4470)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.2ms | Allocations: 5832)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:26:26 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 155)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4462)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.1ms | Allocations: 5819)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:26:41 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 155)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 4459)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 5816)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:26:43 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 12)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3755)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 4523)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:27:56 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 154)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 4452)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 5808)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:29:25 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 937)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 5223)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.5ms | Allocations: 6580)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:30:04 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 954)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 5247)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.4ms | Allocations: 6604)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:30:09 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 737)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 4467)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 5236)
+
+
+Started GET "/events/4" for ::1 at 2023-12-13 12:30:26 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:7
+  Rendered events/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 944)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 5249)
+Completed 200 OK in 23ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 6609)
 
 
