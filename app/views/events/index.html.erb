@@ -1,0 +1,58 @@
+<main class="z-20">
+    <h1 class="text-center">募集一覧</h1>
+    <br>
+    <div role="tablist" class="tabs tabs-bordered">
+        <a role="tab" class="tab">募集中</a>
+        <a role="tab" class="tab tab-active">参加予定</a>
+        <a role="tab" class="tab">検討中</a>
+    </div>
+    <br>
+
+    <div class="grid grid-cols-3 gap-4 justify-center z-10">
+        <% @events.each do |event| %>
+        <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+            <div class="card-body">
+                <h2 class="card-title"><%= event.title %></h2>
+                <p><%= event.user.name %></p>
+                <p><%= event.datetime %></p>
+                <p><%= event.location %></p>
+                <p><%= event.content %></p>
+                <div class="card-actions justify-end">
+                    <%= link_to "詳細を見る", '#', class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <%= paginate @events %>
+    <br>
+    <div class="text-center">
+        <h1>相手を募集する</h1>
+        <p>ピンを合わせることにより対戦相手を募集できます</p>
+    </div>
+    <br>
+
+    <div id='map' class='h-96 w-full relative mb-40'></div>
+
+
+    <script>
+        let map
+    
+        const display = document.getElementById('display')
+    
+        function initMap() {
+    
+            // 位置情報を取得する
+            navigator.geolocation.getCurrentPosition(function (position) {
+                LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    
+                // 取得した位置情報を中心に表示
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: LatLng,
+                    zoom: 15
+                });
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+</main>
