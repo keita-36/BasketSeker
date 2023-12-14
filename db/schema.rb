@@ -17,7 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_055233) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.datetime "datetime"
-    t.text "location"
+    t.decimal "latitude", precision: 10, scale: 7, null: false
+    t.decimal "longitude", precision: 10, scale: 7, null: false
     t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

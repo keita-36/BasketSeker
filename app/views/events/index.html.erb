@@ -15,7 +15,6 @@
                 <h2 class="card-title"><%= event.title %></h2>
                 <p><%= event.user.name %></p>
                 <p><%= event.datetime %></p>
-                <p><%= event.location %></p>
                 <p><%= event.content %></p>
                 <div class="card-actions justify-end">
                     <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
@@ -32,27 +31,35 @@
     </div>
     <br>
 
-    <div id='map' class='h-96 w-full relative mb-40'></div>
-
-
+    <div id='event-map' class='h-96 w-full relative mb-40'></div>
     <script>
-        let map
+            let eventMap
+        
+            function initMap() {
+        
+                // 位置情報を取得する
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        
+                    // 取得した位置情報を中心に表示
+                    eventMap = new google.maps.Map(document.getElementById('event-map'), {
+                        center: LatLng,
+                        zoom: 15
+                    });
     
-        const display = document.getElementById('display')
-    
-        function initMap() {
-    
-            // 位置情報を取得する
-            navigator.geolocation.getCurrentPosition(function (position) {
-                LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
-                // 取得した位置情報を中心に表示
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: LatLng,
-                    zoom: 15
+                    google.maps.event.addListener(eventMap, 'click', event => clickListener(event, eventMap));
                 });
-            });
-        }
+    
+                function clickListener(event, map) {
+                    const lat = event.latLng.lat();
+                    const lng = event.latLng.lng();
+                    const marker = new google.maps.Marker({
+                        position: {lat, lng},
+                        map
+                    });
+                    window.location.href = `/events/new?lat=${lat}&lng=${lng}`;
+                }
+            }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 </main>
