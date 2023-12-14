@@ -1,0 +1,85 @@
+<h1 class="text-2xl font-bold text-center mb-10">イベント作成</h1>
+<%= form_with model: @event, class: "space-y-4 text-center" do |f| %>
+    <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :title, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+
+    <%= f.label :content, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_area :content, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+
+    <%= f.label :datetime, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.datetime_select :datetime, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+    <br>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <br>
+    <%= f.submit class: "mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+<% end %>
+<p>Latitude: <span id="latitude_text"><%= @event.latitude %></span></p>
+<p>Longitude: <span id="longitude_text"><%= @event.longitude %></span></p>
+<p>Address: <span id="address_text"><%= @address %></span></p>
+
+<div id='new-map' class='h-96 w-full relative mb-20'></div>
+
+<script>
+    let newMap;
+    let marker;
+
+    function initMap() {
+        // マップの初期化処理
+        let LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+
+        // 取得した位置情報を中心に表示
+        newMap = new google.maps.Map(document.getElementById('new-map'), {
+            center: LatLng,
+            zoom: 15,
+            gestureHandling: 'cooperative',
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                position: google.maps.ControlPosition.TOP_LEFT,
+                mapTypeIds: ['roadmap', 'terrain']
+            }
+        });
+
+        newMap.addListener('click', function(e) {
+            addMarker(e.latLng);
+            document.getElementById('event_latitude').value = e.latLng.lat();
+            document.getElementById('event_longitude').value = e.latLng.lng();
+            document.getElementById('latitude_text').innerText = e.latLng.lat();
+            document.getElementById('longitude_text').innerText = e.latLng.lng();
+
+            // 逆ジオコーディングを行う
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ location: e.latLng }, function(results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        document.getElementById('address_text').innerText = results[0].formatted_address;
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        });
+
+        addMarker({
+            lat: <%= @event.latitude %>,
+            lng: <%= @event.longitude %>,
+        });
+    }
+
+    function addMarker(location) {
+        // 既存のマーカーを削除
+        if (marker) {
+            marker.setMap(null);
+        }
+        // 新しいマーカーを作成
+        marker = new google.maps.Marker({
+            position: location,
+            map: newMap
+        });
+    }
+</script>
+
+<!-- Google Maps APIのスクリプト読み込み -->
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
