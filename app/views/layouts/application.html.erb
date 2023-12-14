@@ -47,11 +47,13 @@
                   <!-- Sidebar content here -->
                   <li><%= link_to "トップページ", root_path, class: "mt-2" %></li>
                   <% if user_signed_in? %>
-                  <li>
-                    <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %>
-                  </li>
+                    <li><%= link_to "対戦相手を募集する", new_event_path, class: "mt-2" %></li>
+                    <li><%= link_to "募集一覧", events_path, class: "mt-2" %></li>
+                    <li><%= link_to "ランキング", '#', class: "mt-2" %></li>
+                    <li><%= link_to "マイページ", '#', class: "mt-2" %></li>
+                    <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %></li>
                   <%else%>
-                  <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
+                    <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
                   <%end%>
                 </ul>
               </div>
