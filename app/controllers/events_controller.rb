@@ -6,6 +6,13 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
+        puts @event.user.name
+
+
+        uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
+        response = Net::HTTP.get(uri)
+        data = JSON.parse(response)
+        @address = data['results'][0]['formatted_address'] if data['results'].present?
     end
 
     def create
@@ -30,13 +37,22 @@ class EventsController < ApplicationController
     end
 
     def update
-        
         @event = current_user.events.find(params[:id])
         if @event.update(event_params)
             redirect_to @event
         else
             render :edit
         end
+    end
+
+    def edit
+        @event = Event.find(params[:id])
+    end
+
+    def destroy
+        @event = Event.find(params[:id])
+        @event.destroy
+        redirect_to events_path
     end
 
     private

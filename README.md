@@ -84,4 +84,4 @@ https://www.figma.com/file/1Brgrt9uEbXL2sZP4NRs4I/%E7%84%A1%E9%A1%8C?type=design
 
 ### ER 図
 
-https://gyazo.com/9195e967a37612eb7aa3a9084476609d
+https://gyazo.com/0142afc990382e1a5b4478920e90ece3
