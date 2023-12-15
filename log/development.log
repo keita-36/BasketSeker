@@ -9052,90 +9052,503 @@ Processing by EventsController#show as TURBO_STREAM
 Completed 200 OK in 587ms (Views: 19.2ms | ActiveRecord: 2.9ms | Allocations: 9669)
 
 
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (8253.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BasketSeker_development"[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (44.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BasketSeker_development"[0m
-  [1m[35m (27.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "BasketSeker_test"[0m
-  [1m[35m (160.4ms)[0m  [1m[35mCREATE DATABASE "BasketSeker_development" ENCODING = 'unicode'[0m
-  [1m[35m (98.3ms)[0m  [1m[35mCREATE DATABASE "BasketSeker_test" ENCODING = 'unicode'[0m
-  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
-  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7969250185964013975)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateParks (20231208122701)
+Started GET "/users/sign_in" for ::1 at 2023-12-15 14:51:41 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 3604)
+  Rendered layout layouts/application.html.erb (Duration: 120.2ms | Allocations: 44683)
+Completed 200 OK in 147ms (Views: 129.9ms | ActiveRecord: 6.7ms | Allocations: 57363)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-12-15 14:51:57 +0900
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"example@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "example@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 10ms (ActiveRecord: 1.8ms | Allocations: 3472)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"example@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1208)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 4694)
+Completed 200 OK in 405ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 5762)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-12-15 14:52:06 +0900
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 3172)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 6295)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 7526)
+
+
+Started POST "/users" for ::1 at 2023-12-15 14:52:26 +0900
+Processing by Users::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "email"=>"test6@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users/registrations_controller.rb:14:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/registrations_controller.rb:14:in `create'
+  [1m[36mUser Create (4.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "avatar", "play_video", "profile", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["email", "test6@example.com"], ["encrypted_password", "[FILTERED]"], ["name", "テスト３"], ["avatar", nil], ["play_video", nil], ["profile", nil], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-12-15 05:52:26.772554"], ["updated_at", "2023-12-15 05:52:26.772554"]]
+  ↳ app/controllers/users/registrations_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users/registrations_controller.rb:14:in `create'
+Redirected to http://localhost:3000/
+Completed 303 See Other in 423ms (ActiveRecord: 6.4ms | Allocations: 10634)
+
+
+Started GET "/" for ::1 at 2023-12-15 14:52:26 +0900
+Processing by StaticPagesController#top as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (1.0ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:70
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3276)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 7985)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 1.3ms | Allocations: 9098)
+
+
+Started GET "/profile" for ::1 at 2023-12-15 14:52:31 +0900
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 359)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 4460)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.4ms | Allocations: 7290)
+
+
+Started GET "/profile" for ::1 at 2023-12-15 14:54:17 +0900
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 342)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 4977)
+Completed 200 OK in 41ms (Views: 5.6ms | ActiveRecord: 1.0ms | Allocations: 7282)
+
+
+Started GET "/profile" for ::1 at 2023-12-15 14:54:56 +0900
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 4973)
+Completed 200 OK in 11ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 7298)
+
+
+Started GET "/profile" for ::1 at 2023-12-15 14:54:59 +0900
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 83)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 4072)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 0.8ms | Allocations: 5776)
+
+
+Started GET "/profile/edit.1" for ::1 at 2023-12-15 15:07:03 +0900
+Processing by ProfilesController#edit as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/edit.html.erb within layouts/application
+  Rendered profiles/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1382)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 1470)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 34.1ms | Allocations: 6763)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x0000000000e0b0>):
+    1: <div class="w-full max-w-xs">
+    2:     <%= form_with model: @user, local: true, html: { class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" } do |f| %>
+    3:     <div class="mb-4">
+    4:         <%= f.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    5:         <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Username" %>
+  
+app/views/profiles/edit.html.erb:2
+Started GET "/profile/edit.1" for ::1 at 2023-12-15 15:09:13 +0900
+Processing by ProfilesController#edit as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (85.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/edit.html.erb within layouts/application
+  Rendered profiles/edit.html.erb within layouts/application (Duration: 16.5ms | Allocations: 5968)
+  Rendered layout layouts/application.html.erb (Duration: 38.2ms | Allocations: 12145)
+Completed 200 OK in 129ms (Views: 39.9ms | ActiveRecord: 85.4ms | Allocations: 14521)
+
+
+Started GET "/profile" for ::1 at 2023-12-15 15:28:27 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProfilesController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 817)
+  Rendered layout layouts/application.html.erb (Duration: 109.5ms | Allocations: 42495)
+Completed 200 OK in 148ms (Views: 111.4ms | ActiveRecord: 6.9ms | Allocations: 58306)
+
+
+Started GET "/profile/edit.1" for ::1 at 2023-12-15 15:28:29 +0900
+Processing by ProfilesController#edit as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/edit.html.erb within layouts/application
+  Rendered profiles/edit.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2627)
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | Allocations: 6617)
+Completed 200 OK in 27ms (Views: 21.7ms | ActiveRecord: 0.6ms | Allocations: 8511)
+
+
+Started PATCH "/profile" for ::1 at 2023-12-15 16:01:33 +0900
+Processing by ProfilesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "profile"=>"今んちはいは"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "parks" ("id" bigserial primary key, "name" character varying NOT NULL, "postal_code" character varying, "address" character varying, "opening_hours" character varying, "web_site" character varying, "latitude" decimal(10,7) NOT NULL, "longitude" decimal(10,7) NOT NULL, "place_id" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231208122701"]]
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
-Migrating to DeviseCreateUsers (20231209130445)
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "avatar" character varying, "play_video" character varying, "profile" text, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231209130445"]]
-  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateEvents (20231211055233)
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "title" character varying, "datetime" timestamp(6), "latitude" decimal(10,7) NOT NULL, "longitude" decimal(10,7) NOT NULL, "content" text, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_0cb5590091"
-FOREIGN KEY ("user_id")
-  REFERENCES "users" ("id")
-)[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_events_on_user_id" ON "events" ("user_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231211055233"]]
-  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateUserEvents (20231215012703)
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "user_events" ("id" bigserial primary key, "user_id" bigint NOT NULL, "event_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_717ccf5f73"
-FOREIGN KEY ("user_id")
-  REFERENCES "users" ("id")
-, CONSTRAINT "fk_rails_1b0b06bbc7"
-FOREIGN KEY ("event_id")
-  REFERENCES "events" ("id")
-)[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_user_events_on_user_id" ON "user_events" ("user_id")[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_user_events_on_event_id" ON "user_events" ("event_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231215012703"]]
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-12-15 05:04:20.329086"], ["updated_at", "2023-12-15 05:04:20.329086"]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7969250185964013975)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/events/1" for ::1 at 2023-12-15 14:04:32 +0900
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by EventsController#show as HTML
-  Parameters: {"id"=>"1"}
-  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/events_controller.rb:8:in `show'
-Completed 404 Not Found in 25ms (ActiveRecord: 18.1ms | Allocations: 6640)
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "profile" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["profile", "今んちはいは"], ["updated_at", "2023-12-15 07:01:33.341151"], ["id", 1]]
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+Redirected to http://localhost:3000/profile.1
+Completed 302 Found in 29ms (ActiveRecord: 12.0ms | Allocations: 8686)
 
 
-  
-ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=1):
-  
-app/controllers/events_controller.rb:8:in `show'
-Started GET "/events" for ::1 at 2023-12-15 14:04:37 +0900
+Started GET "/profile.1" for ::1 at 2023-12-15 16:01:33 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 377)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 5013)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 1.1ms | Allocations: 7442)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:01:33 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 119)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 4108)
+Completed 200 OK in 15ms (Views: 2.3ms | ActiveRecord: 11.7ms | Allocations: 5843)
+
+
+Started GET "/profile/edit.1" for ::1 at 2023-12-15 16:02:47 +0900
+Processing by ProfilesController#edit as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/edit.html.erb within layouts/application
+  Rendered profiles/edit.html.erb within layouts/application (Duration: 15.9ms | Allocations: 6088)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 10077)
+Completed 200 OK in 26ms (Views: 20.5ms | ActiveRecord: 0.9ms | Allocations: 11848)
+
+
+Started PATCH "/profile" for ::1 at 2023-12-15 16:02:52 +0900
+Processing by ProfilesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000001069e3160 @tempfile=#<Tempfile:/var/folders/gx/skpp971n0jgbrh58fmt_mbsm0000gn/T/RackMultipart20231215-98456-jg50z0.jpg>, @content_type="image/jpeg", @original_filename="28176145_s.jpg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"28176145_s.jpg\"\r\nContent-Type: image/jpeg\r\n">, "avatar_cache"=>"", "play_video_cache"=>"", "profile"=>"今んちはいは"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+[31mUnpermitted parameters: :avatar_cache, :play_video_cache. Context: { controller: ProfilesController, action: update, request: #<ActionDispatch::Request:0x0000000105c6da30>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00000001069e3160 @tempfile=#<Tempfile:/var/folders/gx/skpp971n0jgbrh58fmt_mbsm0000gn/T/RackMultipart20231215-98456-jg50z0.jpg>, @content_type="image/jpeg", @original_filename="28176145_s.jpg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"28176145_s.jpg\"\r\nContent-Type: image/jpeg\r\n">, "avatar_cache"=>"", "play_video_cache"=>"", "profile"=>"今んちはいは"}, "commit"=>"Update", "controller"=>"profiles", "action"=>"update"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "avatar" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["avatar", "28176145_s.jpg"], ["updated_at", "2023-12-15 07:02:52.922401"], ["id", 1]]
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+Redirected to http://localhost:3000/profile.1
+Completed 302 Found in 18ms (ActiveRecord: 2.5ms | Allocations: 5366)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:02:52 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 249)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 4239)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.7ms | Allocations: 5992)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:02:52 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 218)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4215)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 5950)
+
+
+Started GET "/profile/edit.1" for ::1 at 2023-12-15 16:03:01 +0900
+Processing by ProfilesController#edit as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/edit.html.erb within layouts/application
+  Rendered profiles/edit.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1501)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 5498)
+Completed 200 OK in 17ms (Views: 9.6ms | ActiveRecord: 0.5ms | Allocations: 7239)
+
+
+Started PATCH "/profile" for ::1 at 2023-12-15 16:06:22 +0900
+Processing by ProfilesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "avatar_cache"=>"", "play_video"=>#<ActionDispatch::Http::UploadedFile:0x0000000106785288 @tempfile=#<Tempfile:/var/folders/gx/skpp971n0jgbrh58fmt_mbsm0000gn/T/RackMultipart20231215-98456-qpzlsy.mp4>, @content_type="video/mp4", @original_filename="Miley Cyrus - Party In The U.S.A. (Official Video).mp4", @headers="Content-Disposition: form-data; name=\"user[play_video]\"; filename=\"Miley Cyrus - Party In The U.S.A. (Official Video).mp4\"\r\nContent-Type: video/mp4\r\n">, "play_video_cache"=>"", "profile"=>"今んちはいは"}, "commit"=>"Update"}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+[31mUnpermitted parameters: :avatar_cache, :play_video_cache. Context: { controller: ProfilesController, action: update, request: #<ActionDispatch::Request:0x0000000106beeba8>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"テスト３", "avatar_cache"=>"", "play_video"=>#<ActionDispatch::Http::UploadedFile:0x0000000106785288 @tempfile=#<Tempfile:/var/folders/gx/skpp971n0jgbrh58fmt_mbsm0000gn/T/RackMultipart20231215-98456-qpzlsy.mp4>, @content_type="video/mp4", @original_filename="Miley Cyrus - Party In The U.S.A. (Official Video).mp4", @headers="Content-Disposition: form-data; name=\"user[play_video]\"; filename=\"Miley Cyrus - Party In The U.S.A. (Official Video).mp4\"\r\nContent-Type: video/mp4\r\n">, "play_video_cache"=>"", "profile"=>"今んちはいは"}, "commit"=>"Update", "controller"=>"profiles", "action"=>"update"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "play_video" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["play_video", "Miley_Cyrus_-_Party_In_The_U.S.A.__Official_Video_.mp4"], ["updated_at", "2023-12-15 07:06:22.172259"], ["id", 1]]
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/profiles_controller.rb:9:in `update'
+Redirected to http://localhost:3000/profile.1
+Completed 302 Found in 53ms (ActiveRecord: 7.4ms | Allocations: 5160)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:06:22 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 337)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4336)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.4ms | Allocations: 6056)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:06:22 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 322)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 4311)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 6033)
+
+
+Started GET "/" for ::1 at 2023-12-15 16:06:41 +0900
+Processing by StaticPagesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering static_pages/top.html.erb within layouts/application
+  [1m[36mPark Load (3.3ms)[0m  [1m[34mSELECT "parks".* FROM "parks"[0m
+  ↳ app/views/static_pages/top.html.erb:70
+  Rendered static_pages/top.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3286)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 7898)
+Completed 200 OK in 17ms (Views: 11.8ms | ActiveRecord: 3.5ms | Allocations: 8961)
+
+
+Started GET "/events" for ::1 at 2023-12-15 16:06:47 +0900
 Processing by EventsController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering events/index.html.erb within layouts/application
-  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 9], ["OFFSET", 0]]
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 9], ["OFFSET", 0]]
   ↳ app/views/events/index.html.erb:12
-  Rendered events/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2096)
-  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered events/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 2092)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   ↳ app/views/layouts/application.html.erb:24
-  Rendered layout layouts/application.html.erb (Duration: 83.7ms | Allocations: 35814)
-Completed 200 OK in 87ms (Views: 78.3ms | ActiveRecord: 7.2ms | Allocations: 37031)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 7229)
+Completed 200 OK in 33ms (Views: 15.3ms | ActiveRecord: 7.8ms | Allocations: 10414)
+
+
+Started GET "/events/new?lat=35.78701271278&lng=139.69930756604003" for ::1 at 2023-12-15 16:06:50 +0900
+Processing by EventsController#new as HTML
+  Parameters: {"lat"=>"35.78701271278", "lng"=>"139.69930756604003"}
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 5924)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 10708)
+Completed 200 OK in 646ms (Views: 30.7ms | ActiveRecord: 6.1ms | Allocations: 17162)
+
+
+Started POST "/events" for ::1 at 2023-12-15 16:07:02 +0900
+Processing by EventsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"title"=>"テスト", "content"=>"テスト", "datetime(1i)"=>"2023", "datetime(2i)"=>"12", "datetime(3i)"=>"15", "datetime(4i)"=>"07", "datetime(5i)"=>"06", "latitude"=>"35.78701271278", "longitude"=>"139.69930756604003"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/events_controller.rb:20:in `create'
+  [1m[36mEvent Create (2.1ms)[0m  [1m[32mINSERT INTO "events" ("title", "datetime", "latitude", "longitude", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "テスト"], ["datetime", "2023-12-15 07:06:00"], ["latitude", "35.7870127"], ["longitude", "139.6993076"], ["content", "テスト"], ["user_id", 1], ["created_at", "2023-12-15 07:07:02.372052"], ["updated_at", "2023-12-15 07:07:02.372052"]]
+  ↳ app/controllers/events_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/events_controller.rb:20:in `create'
+Redirected to http://localhost:3000/events
+Completed 302 Found in 53ms (ActiveRecord: 2.8ms | Allocations: 6498)
+
+
+Started GET "/events" for ::1 at 2023-12-15 16:07:02 +0900
+Processing by EventsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 9], ["OFFSET", 0]]
+  ↳ app/views/events/index.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/events/index.html.erb:12
+  Rendered events/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2446)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 7414)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.6ms | Allocations: 7786)
+
+
+Started GET "/events/1" for ::1 at 2023-12-15 16:07:04 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  Rendered events/show.html.erb within layouts/application (Duration: 27.0ms | Allocations: 4607)
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 8588)
+Completed 200 OK in 378ms (Views: 29.0ms | ActiveRecord: 6.5ms | Allocations: 13029)
+
+
+Started GET "/events/1" for ::1 at 2023-12-15 16:09:56 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  Rendered events/show.html.erb within layouts/application (Duration: 18.8ms | Allocations: 4730)
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 9344)
+Completed 200 OK in 549ms (Views: 27.5ms | ActiveRecord: 13.7ms | Allocations: 21736)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:09:59 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 693)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4790)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 7638)
+
+
+Started GET "/events/1" for ::1 at 2023-12-15 16:12:28 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  Rendered events/show.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2120)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 6111)
+Completed 200 OK in 379ms (Views: 16.1ms | ActiveRecord: 2.2ms | Allocations: 9232)
+
+
+Started GET "/events/1" for ::1 at 2023-12-15 16:12:34 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  Rendered events/show.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2594)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 8740)
+Completed 200 OK in 468ms (Views: 35.1ms | ActiveRecord: 1.4ms | Allocations: 12448)
+
+
+Started GET "/profile.1" for ::1 at 2023-12-15 16:12:36 +0900
+Processing by ProfilesController#show as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profiles_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/show.html.erb within layouts/application
+  Rendered profiles/show.html.erb within layouts/application (Duration: 10.2ms | Allocations: 591)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 4660)
+Completed 200 OK in 55ms (Views: 18.0ms | ActiveRecord: 0.8ms | Allocations: 6819)
 
 

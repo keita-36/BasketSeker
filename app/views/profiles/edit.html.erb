@@ -1,0 +1,25 @@
+<div class="w-full max-w-xs">
+    <%= form_with model: @user, url: profile_path, local: true, html: { class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" } do |f| %>
+    <div class="mb-4">
+        <%= f.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Username" %>
+    </div>
+    <div class="mb-4">
+        <%= f.label :avatar, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.file_field :avatar, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <%= f.hidden_field :avatar_cache %>
+    </div>
+    <div class="mb-4">
+        <%= f.label :play_video, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.file_field :play_video, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <%= f.hidden_field :play_video_cache %>
+    </div>
+    <div class="mb-4">
+        <%= f.label :profile, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_area :profile, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="flex items-center justify-between">
+        <%= f.submit "Update", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+    <% end %>
+</div>

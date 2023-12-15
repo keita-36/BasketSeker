@@ -12,16 +12,16 @@
 
     <div class="text-center">
         <p>作成者</p>
-        <p><%= @event.user.name %></p>
+        <p><%= link_to @event.user.name, profile_path(@event.user), class: "text-blue-500 underline" %></p>
         <p>参加予定人数</p>
         <p><%= @event.user_events.count %></p>
         <% if current_user == @event.user %>
-            <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
-            <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
+        <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
+        <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
         <% elsif @event.user.participating_in?(@event) %>
-            <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
+        <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
         <% else %>
-            <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
+        <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
         <% end %>
     </div>
 </div>
@@ -32,7 +32,7 @@
 
 <script>
     function initMap() {
-        const LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+        const LatLng = new google.maps.LatLng( < %= @event.latitude % > , < %= @event.longitude % > );
 
         const map = new google.maps.Map(document.getElementById('map'), {
             center: LatLng,

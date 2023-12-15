@@ -45,8 +45,14 @@ gem 'rest-client'
 #デバック用
 gem 'pry-rails'
 
+#認証
 gem 'devise'
+
+#ページネーション
 gem 'kaminari'
+
+#画像動画アップロード
+gem "carrierwave"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
