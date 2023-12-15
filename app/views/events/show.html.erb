@@ -1,14 +1,49 @@
 <h1 class="text-2xl font-bold text-center mb-10">イベント詳細</h1>
 
-<div class="flex justify-center">
-    <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+<div class="grid grid-cols-2 gap-4 items-start">
+    <div class="card w-96 bg-base-100 shadow-xl image-full mb-20">
         <div class="card-body">
             <h2 class="card-title"><%= @event.title %></h2>
-            <p><%= @event.user.name %></p>
             <p><%= @event.datetime %></p>
             <p><%= @event.content %></p>
-            <p><%= @event.content %></p>
+            <p><%= @address %></p>
         </div>
     </div>
+
+    <div class="text-center">
+        <p>作成者</p>
+        <p><%= @event.user.name %></p>
+        <p>参加予定人数</p>
+        <p><%= @event.user_events.count %></p>
+        <% if current_user == @event.user %>
+            <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
+            <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
+        <% elsif @event.user.participating_in?(@event) %>
+            <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+            <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
+        <% end %>
+    </div>
 </div>
+
 <br>
+<div id='map' class='h-96 w-full relative mb-40'></div>
+
+
+<script>
+    function initMap() {
+        const LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+
+        const map = new google.maps.Map(document.getElementById('map'), {
+            center: LatLng,
+            zoom: 15,
+        });
+
+        const marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
