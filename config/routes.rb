@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :events, only: [:show, :edit, :update, :destroy, :new, :create, :index] do
     resources :user_events, only: [:create, :destroy]
   end
+
+  resource :profile, only: %i[edit show update]
 end

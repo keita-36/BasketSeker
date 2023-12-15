@@ -1,0 +1,23 @@
+<div class="space-y-4 md:space-y-6">
+    <div class="space-y-2">
+        <div class="flex items-center space-x-4">
+            <div class="w-20 h-20 bg-gray-200 rounded-full">
+                <%= image_tag @user.avatar.url, class: "rounded-full" if @user.avatar.present? %>
+            </div>
+            <br>
+            <div class="flex flex-col">
+                <div class="flex items-center space-x-2">
+                    <p class="text-lg"><%= @user.name %></p>
+                    <p class="text-sm text-gray-500"><%= @user.profile %></p>
+                </div>
+                <div>
+                    <%= video_tag @user.play_video.url, controls: true, class: "w-full" if @user.play_video.present? %>
+                </div>
+            </div>
+        </div>
+        <% if current_user == @user %>
+            <%= link_to '編集', edit_profile_path(@user), class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+</div>
+
