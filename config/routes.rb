@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   root "static_pages#top"
 
-  resources :events, only: [:show, :edit, :update, :destroy, :new, :create, :index] do
+  resources :events do
+    resources :match_results, only: [:create, :destroy, :new]
     resources :user_events, only: [:create, :destroy]
   end
 
