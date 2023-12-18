@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_15_012703) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_16_012907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_012703) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "match_results", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "user_1_id", null: false
+    t.bigint "user_2_id", null: false
+    t.bigint "winner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_match_results_on_event_id"
+    t.index ["user_1_id"], name: "index_match_results_on_user_1_id"
+    t.index ["user_2_id"], name: "index_match_results_on_user_2_id"
+    t.index ["winner_id"], name: "index_match_results_on_winner_id"
   end
 
   create_table "parks", force: :cascade do |t|
@@ -51,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_012703) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name", null: false
+    t.string "name"
     t.string "avatar"
     t.string "play_video"
     t.text "profile"
@@ -65,6 +78,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_012703) do
   end
 
   add_foreign_key "events", "users"
+  add_foreign_key "match_results", "events"
+  add_foreign_key "match_results", "users", column: "user_1_id"
+  add_foreign_key "match_results", "users", column: "user_2_id"
+  add_foreign_key "match_results", "users", column: "winner_id"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end
