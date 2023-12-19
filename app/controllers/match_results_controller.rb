@@ -22,6 +22,12 @@ class MatchResultsController < ApplicationController
         redirect_to event_path(@event)
     end
 
+    def index
+        @match_counts = MatchResult.match_count.sort_by { |_, v| -v }
+        @win_counts = MatchResult.win_count.sort_by { |_, v| -v }
+        @win_rates = MatchResult.win_rate.sort_by { |_, v| -v }
+    end
+
     private
     def match_result_params
         params.require(:match_result).permit(results: {})

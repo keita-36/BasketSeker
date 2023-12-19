@@ -1,0 +1,21 @@
+<h1>対戦結果</h1>
+<div class="d-flex justify-content-between">
+  <div class="p-2">
+    <h2>対戦数</h2>
+    <% @match_counts.each_with_index do |(user, count), index| %>
+      <p><%= index + 1 %>: <%= user.name %>  <%= count %></p>
+    <% end %>
+  </div>
+  <div class="p-2">
+    <h2>勝利数</h2>
+    <% @win_counts.each_with_index do |(user, count), index| %>
+      <p><%= index + 1 %>: <%= user.name %>  <%= count %></p>
+    <% end %>
+  </div>
+  <div class="p-2">
+    <h2>勝率</h2>
+    <% @win_rates.each_with_index do |(user, rate), index| %>
+      <p><%= index + 1 %>: <%= user.name %>  <%= rate %></p>
+    <% end %>
+  </div>
+</div>

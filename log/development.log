@@ -16436,3 +16436,267 @@ Processing by MatchResultsController#new as HTML
 Completed 200 OK in 22ms (Views: 11.5ms | ActiveRecord: 1.8ms | Allocations: 13489)
 
 
+Started GET "/events/3" for ::1 at 2023-12-19 10:32:43 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  [1m[36mUserEvent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "user_events" WHERE "user_events"."user_id" = $1 AND "user_events"."event_id" = $2 LIMIT $3[0m  [["user_id", 2], ["event_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18:in `participating_in?'
+  Rendered events/show.html.erb within layouts/application (Duration: 17.6ms | Allocations: 7783)
+  Rendered layout layouts/application.html.erb (Duration: 47.7ms | Allocations: 37576)
+Completed 500 Internal Server Error in 857ms (ActiveRecord: 10.7ms | Allocations: 63082)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"match_results", :id=>"3"}, missing required keys: [:event_id]):
+    49:                   <% if user_signed_in? %>
+    50:                     <li><%= link_to "対戦相手を募集する", new_event_path, class: "mt-2" %></li>
+    51:                     <li><%= link_to "募集一覧", events_path, class: "mt-2" %></li>
+    52:                     <li><%= link_to "ランキング",  event_match_results_path, class: "mt-2" %></li>
+    53:                     <li><%= link_to "マイページ", profile_path, class: "mt-2" %></li>
+    54:                     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %></li>
+    55:                   <%else%>
+  
+app/views/layouts/application.html.erb:52
+Started GET "/events/3" for ::1 at 2023-12-19 10:34:37 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  [1m[36mUserEvent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "user_events" WHERE "user_events"."user_id" = $1 AND "user_events"."event_id" = $2 LIMIT $3[0m  [["user_id", 2], ["event_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18:in `participating_in?'
+  Rendered events/show.html.erb within layouts/application (Duration: 7.6ms | Allocations: 3465)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 8697)
+Completed 500 Internal Server Error in 487ms (ActiveRecord: 1.3ms | Allocations: 12313)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `match_results_path' for #<ActionView::Base:0x0000000000e3f8>):
+    49:                   <% if user_signed_in? %>
+    50:                     <li><%= link_to "対戦相手を募集する", new_event_path, class: "mt-2" %></li>
+    51:                     <li><%= link_to "募集一覧", events_path, class: "mt-2" %></li>
+    52:                     <li><%= link_to "ランキング",  match_results_path, class: "mt-2" %></li>
+    53:                     <li><%= link_to "マイページ", profile_path, class: "mt-2" %></li>
+    54:                     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %></li>
+    55:                   <%else%>
+  
+app/views/layouts/application.html.erb:52
+Started GET "/events/3" for ::1 at 2023-12-19 10:37:20 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mUserEvent Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "user_events" WHERE "user_events"."event_id" = $1[0m  [["event_id", 3]]
+  ↳ app/views/events/show.html.erb:17
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/events/show.html.erb:18
+  [1m[36mUserEvent Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "user_events" WHERE "user_events"."user_id" = $1 AND "user_events"."event_id" = $2 LIMIT $3[0m  [["user_id", 2], ["event_id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18:in `participating_in?'
+  Rendered events/show.html.erb within layouts/application (Duration: 22.5ms | Allocations: 5806)
+  Rendered layout layouts/application.html.erb (Duration: 29.5ms | Allocations: 9889)
+Completed 200 OK in 606ms (Views: 28.6ms | ActiveRecord: 13.0ms | Allocations: 22195)
+
+
+Started GET "/match_results" for ::1 at 2023-12-19 10:37:26 +0900
+Processing by MatchResultsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mMatchResult Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:29:in `map'
+  Rendering layout layouts/application.html.erb
+  Rendering match_results/index.html.erb within layouts/application
+  Rendered match_results/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1494)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 6607)
+Completed 200 OK in 35ms (Views: 8.3ms | ActiveRecord: 4.3ms | Allocations: 20049)
+
+
+Started GET "/match_results" for ::1 at 2023-12-19 10:44:15 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MatchResultsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mMatchResult Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mMatchResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:29:in `map'
+  Rendering layout layouts/application.html.erb
+  Rendering match_results/index.html.erb within layouts/application
+  Rendered match_results/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 649)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 31366)
+Completed 200 OK in 70ms (Views: 28.2ms | ActiveRecord: 10.3ms | Allocations: 57089)
+
+
+Started GET "/match_results" for ::1 at 2023-12-19 10:45:17 +0900
+Processing by MatchResultsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mMatchResult Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mMatchResult Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:29:in `map'
+  Rendering layout layouts/application.html.erb
+  Rendering match_results/index.html.erb within layouts/application
+  Rendered match_results/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 425)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 6079)
+Completed 200 OK in 72ms (Views: 8.5ms | ActiveRecord: 2.8ms | Allocations: 16767)
+
+
+Started GET "/match_results" for ::1 at 2023-12-19 10:46:09 +0900
+Processing by MatchResultsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mMatchResult Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mMatchResult Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mMatchResult Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mMatchResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:14:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 1], ["user_2_id", 1]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 2], ["user_2_id", 2]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE ("match_results"."user_1_id" = $1 OR "match_results"."user_2_id" = $2)[0m  [["user_1_id", 3], ["user_2_id", 3]]
+  ↳ app/models/match_result.rb:15:in `block in match_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:20:in `map'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 1]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 2]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE MatchResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "match_results" WHERE "match_results"."winner_id" = $1[0m  [["winner_id", 3]]
+  ↳ app/models/match_result.rb:21:in `block in win_count'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/models/match_result.rb:29:in `map'
+  Rendering layout layouts/application.html.erb
+  Rendering match_results/index.html.erb within layouts/application
+  Rendered match_results/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 422)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 6083)
+Completed 200 OK in 31ms (Views: 8.1ms | ActiveRecord: 4.1ms | Allocations: 16768)
+
+

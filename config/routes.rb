@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :user_events, only: [:create, :destroy]
   end
 
+  resources :match_results, only: [:index]
   resource :profile, only: %i[edit show update]
 end
