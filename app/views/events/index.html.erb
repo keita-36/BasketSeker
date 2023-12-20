@@ -7,14 +7,15 @@
         <a role="tab" class="tab">検討中</a>
     </div>
     <br>
-
+    
     <div class="grid grid-cols-3 gap-4 justify-center z-10">
         <% @events.each do |event| %>
         <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
             <div class="card-body">
                 <h2 class="card-title"><%= event.title %></h2>
+                <%= render "event_attendances/btn", event: event %>
                 <p><%= event.user.name %></p>
-                <p><%= event.datetime %></p>
+                <p><%= event.datetime %>
                 <p><%= event.content %></p>
                 <div class="card-actions justify-end">
                     <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
