@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_19_022534) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_024816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_022534) do
     t.index ["winner_id"], name: "index_match_results_on_winner_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "parks", force: :cascade do |t|
     t.string "name", null: false
     t.string "postal_code"
@@ -59,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_022534) do
     t.string "place_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "message_id"
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_rooms_on_event_id"
+    t.index ["message_id"], name: "index_rooms_on_message_id"
   end
 
   create_table "user_events", force: :cascade do |t|
@@ -93,6 +112,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_19_022534) do
   add_foreign_key "match_results", "users", column: "user_1_id"
   add_foreign_key "match_results", "users", column: "user_2_id"
   add_foreign_key "match_results", "users", column: "winner_id"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "rooms", "events"
+  add_foreign_key "rooms", "messages"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
 end

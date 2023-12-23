@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   devise_for :users, :controllers => {
-    :registrations => 'users/registrations'
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
   }
 
   root "static_pages#top"
@@ -8,6 +11,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :match_results, only: [:create, :destroy, :new]
     resources :user_events, only: [:create, :destroy]
+    resources :rooms, only: [:show]
   end
 
   resources :match_results, only: [:index]
