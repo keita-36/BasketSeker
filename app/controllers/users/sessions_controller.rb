@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  def create
+    super do |resource|
+      if resource.valid?
+        cookies.signed[:user_id] = resource.id
+        logger.debug "User ID from cookies: #{cookies.signed[:user_id]}"
+      end
+    end
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

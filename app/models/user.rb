@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :won_match_results, class_name: 'MatchResult', foreign_key: 'winner_id'
   has_many :event_attendances, dependent: :destroy
   has_many :event_attendances_events, through: :event_attendances, source: :event
+  has_many :messages, dependent: :destroy
+  has_many :message_rooms, through: :messages, source: :room
 
   mount_uploader :play_video, VideoUploader
   mount_uploader :avatar,AvatarUploader

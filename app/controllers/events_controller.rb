@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
-        puts @event.user.name
+        @messages = Message.where(room_id: params[:id])
 
 
         uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
@@ -19,6 +19,7 @@ class EventsController < ApplicationController
         @event = current_user.events.build(event_params)
         if @event.save
             UserEvent.create(user: current_user, event: @event)
+            Room.create!(event: @event)
             redirect_to events_path
         else
             render :new
