@@ -37,14 +37,14 @@ BasketSeker
   - 参加者同士でやり取りができるチャット機能
   - チャットがあった際通知する機能
 
-- ゴール検索系（ログイン前）</br>
-  地図上にバスケゴールを配置
+- ゴール検索（ログイン前）</br>
+地図上にバスケゴールを配置
 
 - プロフィール機能</br>
-　　 プレイ動画を投稿できるようにし、レベル感を共有できる
+プレイ動画を投稿できるようにし、レベル感を共有できる
 
 - ランキング機能</br>
-　  参加数、イベント作成数、勝率に応じて対戦結果を出力する機能
+参加数、イベント作成数、勝率に応じて対戦結果を出力する機能
 
 ## 使用技術
 - バックエンド
@@ -68,4 +68,5 @@ BasketSeker
 https://www.figma.com/file/1Brgrt9uEbXL2sZP4NRs4I/%E7%84%A1%E9%A1%8C?type=design&node-id=0%3A1&mode=design&t=Uvb53H2hEAJ9s1es-1
 
 ## ER 図
-https://gyazo.com/0142afc990382e1a5b4478920e90ece3
+![image](https://github.com/keita-36/BasketSeker/assets/131235353/cc3a09ee-194c-453b-820d-5ede589bcbd2)
+
