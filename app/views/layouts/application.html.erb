@@ -16,20 +16,27 @@
     <div class="navbar">
       <div class="flex-1">
         <a href=#>
-          <%= image_tag 'logo.png', class: 'm-auto w-16 h-16' %>
+          <%= image_tag 'logo.png', class: 'm-auto w-32 h-32' %>
         </a>
       </div>
       <div class="h-20 flex-none">
         <ul class="menu menu-horizontal px-1">
           <% if user_signed_in? %>
-          <li>
-            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mt-2" %>
-          </li>
+              <%= link_to  destroy_user_session_path, data: { turbo_method: :delete }, class:"p-0" do %>
+                <svg class="w-6 h-6 mt-3 mr-3" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="logout"><line class="cls-1" x1="15.92" x2="28.92" y1="16" y2="16"/><path d="M23.93,25v3h-16V4h16V7h2V3a1,1,0,0,0-1-1h-18a1,1,0,0,0-1,1V29a1,1,0,0,0,1,1h18a1,1,0,0,0,1-1V25Z"/><line class="cls-1" x1="28.92" x2="24.92" y1="16" y2="20"/><line class="cls-1" x1="28.92" x2="24.92" y1="16" y2="12"/><line class="cls-1" x1="24.92" x2="24.92" y1="8.09" y2="6.09"/><line class="cls-1" x1="24.92" x2="24.92" y1="26" y2="24"/></g></svg>
+              <% end %>
+            <%= link_to notifications_path do %>
+              <svg class="w-6 h-6 mt-3 mr-3 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M15.133 10.632v-1.8a5.407 5.407 0 0 0-4.154-5.262.955.955 0 0 0 .021-.106V1.1a1 1 0 0 0-2 0v2.364a.944.944 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C4.867 13.018 3 13.614 3 14.807 3 15.4 3 16 3.538 16h12.924C17 16 17 15.4 17 14.807c0-1.193-1.867-1.789-1.867-4.175Zm-13.267-.8a1 1 0 0 1-1-1 9.424 9.424 0 0 1 2.517-6.39A1.001 1.001 0 1 1 4.854 3.8a7.431 7.431 0 0 0-1.988 5.037 1 1 0 0 1-1 .995Zm16.268 0a1 1 0 0 1-1-1A7.431 7.431 0 0 0 15.146 3.8a1 1 0 0 1 1.471-1.354 9.425 9.425 0 0 1 2.517 6.391 1 1 0 0 1-1 .995ZM6.823 17a3.453 3.453 0 0 0 6.354 0H6.823Z"/>
+              </svg>
+            <% end %>
           <%else%>
-          <li><%= link_to "ログイン", new_user_session_path, class: "mt-2" %></li>
+            <%= link_to new_user_session_path do %>
+              <svg class="w-6 h-6 mt-3 mr-3" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="login"><line class="cls-1" x1="29" x2="16" y1="16" y2="16"/><path d="M24,25v3H8V4H24V7h2V3a1,1,0,0,0-1-1H7A1,1,0,0,0,6,3V29a1,1,0,0,0,1,1H25a1,1,0,0,0,1-1V25Z"/><line class="cls-1" x1="16" x2="20" y1="16" y2="12"/><line class="cls-1" x1="16" x2="20" y1="16" y2="20"/><line class="cls-1" x1="25" x2="25" y1="8" y2="6"/><line class="cls-1" x1="25" x2="25" y1="26" y2="24"/></g></svg>
+            <% end %>
           <%end%>
           <li>
-            <div class="drawer drawer-end">
+            <div class="drawer drawer-end p-0">
               <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
               <div class="drawer-content">
                 <!-- Page content here -->

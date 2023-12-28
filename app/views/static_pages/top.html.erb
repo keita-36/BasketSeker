@@ -1,48 +1,50 @@
 <main class="mb-36 text-center z-10">
     <div class="text-center w-40 h-40 mx-auto relative">
         <%= image_tag 'logo.png', class: 'mb-0 w-56 h-56' %>
-        <span class="absolute top-40 right-0.5">サービスについて</span>
     </div>
-    <div class="mb-8">
+    <div class="mb-8 text-18px">
         <br>
         <br>
-        <p>バスケの1ON1をやりたい人同士を</p>
-        <p>繋げるサービスです</p>
-    </div>
-    <h1 class="text-center">主な機能</h1>
-    <br>
-    <br>
-    <div class="text-center flex justify-center">
-        <div class="w-1/3">
-            <h1>対戦相手募集機能</h1>
-            <br>
-            <p>対戦相手を条件を入力し</p>
-            <p>募集することができます。</p>
-            <p>対戦後は結果を入力する</p>
-            <p>ことができます。</p>
-        </div>
-        <div class="w-1/3">
-            <p>チャット機能</p>
-            <br>
-            <p>参加者同士でチャットにて</p>
-            <p>やり取りを行うことができます</p>
-        </div>
-        <div class="w-1/3">
-            <h1>ランキング機能</h1>
-            <br>
-            <p>対戦成績を対戦数、</p>
-            <p>勝利数、勝率にて</p>
-            <p>表示されます。</p>
-        </div>
-    </div>
-    <div>
-        <h1>コートマップ</h1>
-        <p>コートの位置を確認することができます。</p>
-        <p>ログイン後マップ上にてピンを合わせることにより対戦相手を募集できます</p>
+        <p class="text-2xl font-black">個人同士のバスケマッチを繋げるサービス</p>
     </div>
     <br>
     <br>
-    <div id='map' class='h-96 w-full relative mb-20'></div>
+    <h1 class="text-center text-2xl font-black border-t-2 border-b-2 py-2 w-3/4 mx-auto">主な機能</h1>
+    <br>
+    <br>
+    <div class="text-center flex justify-center -space-x-56">
+        <div class="w-1/3">
+            <h1 class="text-xl font-black">対戦相手募集機能</h1>
+            <br>
+            <p class="text-sm">対戦相手を条件を入力し</p>
+            <p class="text-sm">募集することができます。</p>
+            <p class="text-sm">対戦後は結果を入力できます</p>
+        </div>
+        <div class="w-1/3">
+            <h1 class="text-xl font-black">チャット機能</h1>
+            <br>
+            <p class="text-sm">参加者同士でチャットで</p>
+            <p class="text-sm">やり取りを行うことができます</p>
+        </div>
+        <div class="w-1/3">
+            <h1 class="text-xl font-black">ランキング機能</h1>
+            <br>
+            <p class="text-sm">対戦成績を対戦数、勝率</p>
+            <p class="text-sm">勝利数に応じて表示</p>
+            <p class="text-sm">されます。</p>
+        </div>
+    </div>
+    </br>
+    <div class="text-center">
+        <h1 class="text-xl font-black">コートマップ</h1>
+        <br>
+        <p class="text-sm">コートの位置を確認することができます。</p>
+        <p class="text-sm">ログイン後マップ上にてピンを合わせることにより</p>
+        <p class="text-sm">対戦相手を募集できます</p>
+    </div>
+    <br>
+    <br>
+    <div id='map' class='h-96 max-w-7xl mx-auto relative mb-20'></div>
 
     <script>
         let map;

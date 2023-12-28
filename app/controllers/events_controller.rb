@@ -8,7 +8,6 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
         @messages = Message.where(room_id: params[:id])
 
-
         uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
