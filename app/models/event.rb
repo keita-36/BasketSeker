@@ -10,4 +10,6 @@ class Event < ApplicationRecord
   has_many :event_attendances_users, through: :event_attendances, source: :user
 
   has_one :room, dependent: :destroy
+
+  
 end

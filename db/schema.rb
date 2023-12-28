@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_20_024816) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_23_021715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_024816) do
     t.bigint "room_id", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "visitor_id", null: false
+    t.bigint "visited_id", null: false
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.integer "action", null: false
+    t.boolean "checked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "parks", force: :cascade do |t|
@@ -114,6 +128,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_024816) do
   add_foreign_key "match_results", "users", column: "winner_id"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "rooms", "events"
   add_foreign_key "rooms", "messages"
   add_foreign_key "user_events", "events"

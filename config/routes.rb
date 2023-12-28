@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   resources :match_results, only: [:index]
   resource :profile, only: %i[edit show update]
   resources :event_attendances, only: [:create, :destroy]
+
+  resources :notifications, only: %i[index destroy] 
+
 end
