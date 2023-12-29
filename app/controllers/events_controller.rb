@@ -2,6 +2,9 @@ class EventsController < ApplicationController
 
     def index
         @events = Event.all.includes(:user).order(created_at: :desc).page(params[:page])
+        @participating_events = current_user.participating_events.page(params[:page])
+        @favorited_events = current_user.favorited_events.page(params[:page])
+        @past_events = Event.past.page(params[:page])
     end
 
     def show

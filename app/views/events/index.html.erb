@@ -1,38 +1,94 @@
 <main class="z-20">
-    <h1 class="text-center">募集一覧</h1>
+    <h1 class="text-center font-black text-3xl pt-10 border-b-2 py-2 w-3/4 mx-auto">募集一覧</h1>
     <br>
-    <div role="tablist" class="tabs tabs-bordered">
-        <a role="tab" class="tab">募集中</a>
-        <a role="tab" class="tab tab-active">参加予定</a>
-        <a role="tab" class="tab">検討中</a>
-    </div>
-    <br>
-    
-    <div class="grid grid-cols-3 gap-4 justify-center z-10">
-        <% @events.each do |event| %>
-        <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
-            <div class="card-body">
-                <h2 class="card-title"><%= event.title %></h2>
-                <%= render "event_attendances/btn", event: event %>
-                <p><%= event.user.name %></p>
-                <p><%= event.datetime %>
-                <p><%= event.content %></p>
-                <div class="card-actions justify-end">
-                    <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+    <div data-controller="tab" role="tablist" class="tabs tabs-bordered">
+        <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <a data-action="tab#switchTab" data-tab-target="tab" role="tab" class="tab">募集中</a>
+            <a data-action="tab#switchTab" data-tab-target="tab" role="tab" class="tab inline-block p-4 text-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500">参加予定</a>
+            <a data-action="tab#switchTab" data-tab-target="tab" role="tab" class="tab">検討中</a>
+            <a data-action="tab#switchTab" data-tab-target="tab" role="tab" class="tab">過去イベント</a>
+        </div>
+
+        <br>
+        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10">
+            <% @events.each do |event| %>
+            <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+                <div class="card-body">
+                    <h2 class="card-title"><%= event.title %></h2>
+                    <%= render "event_attendances/btn", event: event %>
+                    <p><%= event.user.name %></p>
+                    <p><%= event.datetime %>
+                    <p><%= event.content %></p>
+                    <div class="card-actions justify-end">
+                        <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                    </div>
                 </div>
             </div>
+            <% end %>
+            <%= paginate @events %>
         </div>
-        <% end %>
+        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
+            <% @participating_events.each do |event| %>
+            <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+                <div class="card-body">
+                    <h2 class="card-title"><%= event.title %></h2>
+                    <%= render "event_attendances/btn", event: event %>
+                    <p><%= event.user.name %></p>
+                    <p><%= event.datetime %>
+                    <p><%= event.content %></p>
+                    <div class="card-actions justify-end">
+                        <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <%= paginate @participating_events %>
+        </div>
+        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
+            <% @favorited_events.each do |event| %>
+            <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+                <div class="card-body">
+                    <h2 class="card-title"><%= event.title %></h2>
+                    <%= render "event_attendances/btn", event: event %>
+                    <p><%= event.user.name %></p>
+                    <p><%= event.datetime %>
+                    <p><%= event.content %></p>
+                    <div class="card-actions justify-end">
+                        <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <%= paginate @favorited_events %>
+        </div>
+        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;">
+            <% @past_events.each do |event| %>
+            <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
+                <div class="card-body">
+                    <h2 class="card-title"><%= event.title %></h2>
+                    <%= render "event_attendances/btn", event: event %>
+                    <p><%= event.user.name %></p>
+                    <p><%= event.datetime %>
+                    <p><%= event.content %></p>
+                    <div class="card-actions justify-end">
+                        <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+            <%= paginate @past_events %>
+        </div>
     </div>
-    <%= paginate @events %>
+    
     <br>
     <div class="text-center">
-        <h1>相手を募集する</h1>
+        <h1 class="font-black text-3xl border-t-2 border-b-2 py-2 w-3/4 mx-auto">相手を募集する</h1>
+        <br>
         <p>ピンを合わせることにより対戦相手を募集できます</p>
     </div>
     <br>
 
-    <div id='event-map' class='h-96 w-full relative mb-40'></div>
+    <div id='event-map' class='h-96 max-w-7xl mx-auto relative mb-40'></div>
     <script>
             let eventMap
         

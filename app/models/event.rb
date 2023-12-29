@@ -11,5 +11,6 @@ class Event < ApplicationRecord
 
   has_one :room, dependent: :destroy
 
-  
+
+  scope :past, -> { where('datetime < ?', Date.today) }
 end
