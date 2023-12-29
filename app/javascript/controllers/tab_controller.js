@@ -14,7 +14,6 @@ export default class extends Controller {
   }
 
   showTab(index) {
-    console.log(this.contentTargets);
     this.tabTargets.forEach((tab, i) => {
       tab.classList.toggle('tab-active', i === index)
       if (i === index) {

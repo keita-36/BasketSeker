@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.all.includes(:user).order(created_at: :desc).page(params[:page])
+        @events = Event.where('datetime > ?', DateTime.now).includes(:user).order(created_at: :desc).page(params[:page])
         @participating_events = current_user.participating_events.page(params[:page])
         @favorited_events = current_user.favorited_events.page(params[:page])
         @past_events = Event.past.page(params[:page])
@@ -11,6 +11,7 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
         @messages = Message.where(room_id: params[:id])
 
+        # このコードは、Google Maps Geocoding API に対して、指定された緯度と経度の書式設定された住所を取得するリクエストを行っています。
         uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)

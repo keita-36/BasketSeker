@@ -34,7 +34,24 @@
 
 
 <br>
-<div id='map' class='h-96 w-full relative mb-40' data-lat='<%= @event.latitude %>' data-lng='<%= @event.longitude %>'></div>
-<%= javascript_include_tag 'application' %>
+<div id='show-map' class='h-96 w-full relative mb-40'>
+</div>
+
+
+<script>
+    function initMap() {
+        const LatLng = new google.maps.LatLng( <%= @event.latitude %>, <%= @event.longitude %>);
+
+        const map = new google.maps.Map(document.getElementById('show-map'), {
+            center: LatLng,
+            zoom: 15,
+        });
+
+        const marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+        });
+    }
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
