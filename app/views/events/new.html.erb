@@ -14,8 +14,7 @@
     <br>
     <%= f.submit class: "mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
 <% end %>
-<p>Address: <span id="address_text"><%= @address %></span></p>
-
+<p>住所: <span id="address_text"><%= @address %></span></p>
 <div id='new-map' class='h-96 w-full relative mb-20'></div>
 
 <script>
@@ -24,7 +23,7 @@
 
     function initMap() {
         // マップの初期化処理
-        let LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+        let LatLng = new google.maps.LatLng(<%= @event&.latitude || 35.683512 %>, <%= @event&.longitude || 139.691712 %>);
 
         // 取得した位置情報を中心に表示
         newMap = new google.maps.Map(document.getElementById('new-map'), {
@@ -42,8 +41,8 @@
             addMarker(e.latLng);
             document.getElementById('event_latitude').value = e.latLng.lat();
             document.getElementById('event_longitude').value = e.latLng.lng();
-            document.getElementById('latitude_text').innerText = e.latLng.lat();
-            document.getElementById('longitude_text').innerText = e.latLng.lng();
+            // document.getElementById('latitude_text').innerText = e.latLng.lat();
+            // document.getElementById('longitude_text').innerText = e.latLng.lng();
 
             // 逆ジオコーディングを行う
             const geocoder = new google.maps.Geocoder();
@@ -61,8 +60,8 @@
         });
 
         addMarker({
-            lat: <%= @event.latitude %>,
-            lng: <%= @event.longitude %>,
+            lat: <%= @event&.latitude || 35.683512 %>,
+            lng: <%= @event&.longitude || 139.691712 %>,
         });
     }
 
