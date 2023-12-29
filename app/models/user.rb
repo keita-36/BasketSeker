@@ -47,4 +47,14 @@ class User < ApplicationRecord
   def bookmark?(event)
     event_attendances_events.include?(event)
   end
+
+  # ユーザーが参加しているイベントを返します。
+  def participating_events
+    Event.joins(:user_events).where(user_events: { user_id: id })
+  end
+
+  # ユーザーがお気に入りに登録したイベントを返します。
+  def favorited_events
+    event_attendances_events
+  end
 end
