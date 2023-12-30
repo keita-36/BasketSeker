@@ -1,21 +1,33 @@
-<h1 class="text-2xl font-bold text-center mb-10">イベント作成</h1>
-<%= form_with model: @event, class: "space-y-4 text-center" do |f| %>
-    <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.text_field :title, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-
-    <%= f.label :content, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.text_area :content, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-
-    <%= f.label :datetime, class: "block text-sm font-medium text-gray-700" %>
-    <%= f.datetime_select :datetime, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-    <br>
-    <%= f.hidden_field :latitude %>
-    <%= f.hidden_field :longitude %>
-    <br>
-    <%= f.submit class: "mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-<% end %>
-<p>住所: <span id="address_text"><%= @address %></span></p>
-<div id='new-map' class='h-96 w-full relative mb-20'></div>
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto mb-40">
+    <div class="mx-auto max-w-2xl">
+        <div class="text-center">
+            <h1 class="ext-xl text-gray-800 font-bold sm:text-3xl dark:text-white">イベント作成</h1>
+        </div>
+        <div class="mt-5 p-4 relative z-10 bg-white border rounded-xl sm:mt-10 md:p-10 dark:bg-gray-800 dark:border-gray-700">
+            <%= form_with model: @event, class: "space-y-4 text-center" do |f| %>
+                <div class="field mb-4 sm:mb-8">
+                    <%= f.label :タイトル, class: "block mb-2 text-sm font-black dark:text-white text-left" %>
+                    <%= f.text_field :title, class: "py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" %>
+                </div>
+                <div class="field mb-4 sm:mb-8">
+                    <%= f.label :内容, class: "block mb-2 text-sm font-black dark:text-white text-left font-black" %>
+                    <%= f.text_area :content, class: "py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" %>
+                </div>
+                <div class="field mb-4 sm:mb-8">
+                    <%= f.label :日時, class: "block mb-2 text-sm font-black dark:text-white text-left" %>
+                    <%= f.datetime_field :datetime, class: "py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" %>
+                </div>
+                <%= f.hidden_field :latitude %>
+                <%= f.hidden_field :longitude %>
+                <p class="text-left"><span class="font-black text-sm">住所</span> <br> <span id="address_text" class="text-gray-300 py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"><%= @address || 'ピンを合わせてください' %></span></p>
+                <div id='new-map' class='h-96 max-w-7xl mx-auto relative mb-40'></div>
+                <div class="actions mt-6 grid">
+                    <%= f.submit class: "w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
 
 <script>
     let newMap;
@@ -50,6 +62,7 @@
                 if (status === 'OK') {
                     if (results[0]) {
                         document.getElementById('address_text').innerText = results[0].formatted_address;
+                        document.getElementById('address_text').style.color = 'black'; 
                     } else {
                         window.alert('No results found');
                     }

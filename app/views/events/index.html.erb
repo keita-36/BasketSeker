@@ -17,7 +17,7 @@
                     <h2 class="card-title"><%= event.title %></h2>
                     <%= render "event_attendances/btn", event: event %>
                     <p><%= event.user.name %></p>
-                    <p><%= event.datetime %>
+                    <p><%= l event.datetime, format: :default %>
                     <p><%= event.content %></p>
                     <div class="card-actions justify-end">
                         <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
