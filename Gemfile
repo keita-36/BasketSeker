@@ -54,6 +54,9 @@ gem 'kaminari'
 #画像動画アップロード
 gem "carrierwave"
 
+#日本語化
+gem 'rails-i18n'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
