@@ -1,21 +1,53 @@
-<h1>対戦結果</h1>
-<div class="d-flex justify-content-between">
+<h1 class="text-2xl font-black text-center text-3xl">対戦結果</h1>
+<br>
+<br>
+<div class="flex justify-around text-2xl">
   <div class="p-2">
-    <h2>対戦数</h2>
+    <h2 class="text-2xl font-bold text-center border-t-2 border-b-2 py-2">対戦数</h2>
     <% @match_counts.each_with_index do |(user, count), index| %>
-      <p><%= index + 1 %>: <%= user.name %>  <%= count %></p>
+      <% break if index > 2 %>
+      <p class="flex items-end">
+        <% if index == 0 %>
+          <%= image_tag '1.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 1 %>
+          <%= image_tag '2.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 2 %>
+          <%= image_tag '3.png', class: "w-28 h-28 inline" %>
+        <% end %>
+        <span class="mb-10 ml-10"><%= user.name %>  <%= count %></span>
+      </p>
     <% end %>
   </div>
   <div class="p-2">
-    <h2>勝利数</h2>
+    <h2 class="text-2xl font-bold text-center border-t-2 border-b py-2">勝利数</h2>
     <% @win_counts.each_with_index do |(user, count), index| %>
-      <p><%= index + 1 %>: <%= user.name %>  <%= count %></p>
+      <% break if index > 2 %>
+      <p class="flex items-end">
+        <% if index == 0 %>
+          <%= image_tag '1.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 1 %>
+          <%= image_tag '2.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 2 %>
+          <%= image_tag '3.png', class: "w-28 h-28 inline" %>
+        <% end %>
+        <span class="mb-10 ml-10"><%= user.name %>  <%= count %>勝</span>
+      </p>
     <% end %>
   </div>
   <div class="p-2">
-    <h2>勝率</h2>
+    <h2 class="text-2xl font-bold text-center border-t-2 border-b-2 py-2">勝率</h2>
     <% @win_rates.each_with_index do |(user, rate), index| %>
-      <p><%= index + 1 %>: <%= user.name %>  <%= rate %></p>
+      <% break if index > 2 %>
+      <p class="flex items-end">
+        <% if index == 0 %>
+          <%= image_tag '1.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 1 %>
+          <%= image_tag '2.png', class: "w-28 h-28 inline" %>
+        <% elsif index == 2 %>
+          <%= image_tag '3.png', class: "w-28 h-28 inline" %>
+        <% end %>
+        <span class="mb-10 ml-10"><%= user.name %>  <%= rate %></span>
+      </p>
     <% end %>
   </div>
 </div>
