@@ -1,19 +1,25 @@
-<%= form_with model: [@event, @match_result], local: true do |f| %>
-<div class="tw-form">
-
-    <% @users.each do |user| %>
-        <% if !MatchResult.result_exists?(@current_user, user, @event) %>
-            <%= f.label "対 #{user.name}" %>
-            <%= f.radio_button "results[#{user.id}]", 'WIN' %> WIN
-            <%= f.radio_button "results[#{user.id}]", 'LOSE' %> LOSE
+<h1 class="font-black text-center text-3xl">試合結果入力</h1>
+<br>
+<div class="flex justify-center">
+    <div class="w-full max-w-xl">
+        <%= form_with model: [@event, @match_result], local: true, html: { class: "bg-white shadow-md rounded px-8 pt-10 pb-10 mb-4" } do |f| %>
+            <% @users.each do |user| %>
+                <% if !MatchResult.result_exists?(@current_user, user, @event) %>
+                    <%= f.label "対 #{user.name}", class: "block text-gray-700 text-2xl font-bold" %>
+                    <br>
+                    <%= f.radio_button "results[#{user.id}]", 'WIN', id: "win_#{user.id}", class: "sr-only" %>
+                    <%= f.label "results[#{user.id}]", "WIN", class:"flex flex-col w-full max-w-lg mx-auto text-center border-2 rounded-2xl border-gray-900 p-2 my-4 text-3xl hover:bg-yellow-200", for: "win_#{user.id}" %>
+                    <%= f.radio_button "results[#{user.id}]", 'LOSE', id: "lose_#{user.id}", class: "sr-only" %>
+                    <%= f.label "results[#{user.id}]", "LOSE", class:"flex flex-col w-full max-w-lg mx-auto text-center border-2 rounded-2xl border-gray-900 p-2 my-4 text-3xl hover:bg-yellow-200", for: "lose_#{user.id}"%>
+                <% end %>
+                <br>
+            <% end %>  
+            <br>
+            <% unless @result_saved %>
+                <%= f.submit "結果を送信", class: 'inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"' %>
+            <% else %>
+                <%= link_to 'イベントへ戻る', event_path(@event), class: 'inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+            <% end %>
         <% end %>
-        <br>
-    <% end %>
-
-    <% unless @result_saved %>
-        <%= f.submit "結果を送信", class: 'btn btn-primary' %>
-    <% else %>
-        <%= link_to 'イベントへ戻る', event_path(@event), class: 'btn btn-primary' %>
-    <% end %>
+    </div>
 </div>
-<% end %>
