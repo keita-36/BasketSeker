@@ -28,7 +28,7 @@ if (chatInput) {
 }
 
 function handleKeyUp(e) {
-  if (e.key === 'Enter' && e.shiftKey && e.target.value.trim() !== '') {
+  if (e.key === 'Enter' && e.target.value.trim() !== '') {
     let event_id = e.target.getAttribute('data-event-id');
     appRoom.speak(event_id, e.target.value);
     e.target.value = '';
