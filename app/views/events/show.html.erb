@@ -1,41 +1,60 @@
 <h1 class="text-2xl font-bold text-center mb-10">イベント詳細</h1>
 
-<div class="grid grid-cols-2 gap-4 items-start">
-    <div class="card w-96 bg-base-100 shadow-xl image-full mb-20">
-        <div class="card-body">
-            <h2 class="card-title"><%= @event.title %></h2>
-            <p><%= l @event.datetime %></p>
-            <p><%= @event.content %></p>
-            <p><%= @address %></p>
+<div class="grid grid-cols-12 gap-4 items-start">
+    <div class="col-start-4 col-span-5 row-start-1">
+        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div>
+                <p class="block mb-2 text-sm font-black dark:text-white text-left">タイトル</p>
+                <h2><%= @event.title %></h2>
+                <br>
+                <p class="block mb-2 text-sm font-black dark:text-white text-left">日時</p>
+                <p><%= l @event.datetime %></p>
+                <br>
+                <p class="block mb-2 text-sm font-black dark:text-white text-left">内容</p>
+                <p><%= @event.content %></p>
+                <br>
+                <p class="block mb-2 text-sm font-black dark:text-white text-left">場所</p>
+                <p><%= @address %></p>
+            </div>
         </div>
     </div>
 
-    <div class="text-center">
-        <p>作成者</p>
-        <p><%= link_to @event.user.name, profile_path(@event.user), class: "text-blue-500 underline" %></p>
-        <p>参加予定人数</p>
-        <p><%= @event.user_events.count %></p>
-        <% if current_user == @event.user %>
-            <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
-            <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
-        <% elsif current_user.participating_in?(@event) %>
-            <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
-        <% else %>
-            <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
-        <% end %>
-        <% if current_user.participating_in?(@event) %>
-            <p>結果入力</p>
-            <%= button_to '結果入力', new_event_match_result_path(@event), method: :get, class: 'btn btn-primary' %>
-        <% end %>
+    <div class="text-center col-span-2 col-start-8 row-start-1 pl-12">
+        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <p>作成者</p>
+            <p><%= link_to @event.user.name, profile_path(@event.user), class: "text-blue-500 underline" %></p>
+        </div>
+        <br>
+        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <p>参加予定人数</p>
+            <p><%= @event.user_events.count %></p>
+            <% if current_user == @event.user %>
+                <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
+                <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
+            <% elsif current_user.participating_in?(@event) %>
+                <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
+            <% else %>
+                <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
+            <% end %>
+        </div>
+        <br>
+        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <% if current_user.participating_in?(@event) %>
+                <p>結果入力</p>
+                <%= button_to '結果入力', new_event_match_result_path(@event), method: :get, class: 'btn btn-primary' %>
+            <% end %>
+        </div>
     </div>
 </div>
-<h1>チャット</h1>
-<%= render 'rooms/show', { event: @event, message: @messages } %>
-
-
 <br>
-<div id='show-map' class='h-96 w-full relative mb-40'>
+<div class="grid grid-cols-12">
+    <div class="col-start-4 col-end-10">
+        <div id='show-map' class='h-96 max-w-5xl mx-auto relative mb-10'></div>
+    </div>
 </div>
+
+<h1 class="text-2xl font-bold text-center">チャット</h1>
+<%= render 'rooms/show', { event: @event, message: @messages } %>
 
 
 <script>
