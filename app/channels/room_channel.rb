@@ -11,6 +11,7 @@ class RoomChannel < ApplicationCable::Channel
     event = Event.find_by(id: data['event_id'])
     if event
       Message.create! content: data['message'], user_id: current_user.id, room_id: event.room.id
+      logger.debug "Data: #{event.room.id}"
     end
   end
 end
