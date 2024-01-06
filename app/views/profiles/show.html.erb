@@ -2,7 +2,7 @@
 <div class="flex items-start justify-center min-h-screen pt-12">
     <div class="w-full max-w-xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col items-center pb-10">
-            <%= image_tag @user.avatar.url, class: "w-32 h-32 mb-3 mt-3 rounded-full shadow-lg" if @user.avatar.present? %>
+            <%= image_tag(@user.avatar.present? ? @user.avatar.url : "sample.jpg", class: "w-32 h-32 mb-3 mt-3 rounded-full shadow-lg") %>
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><%= @user.name %></h5>
             <span class="text-sm text-gray-500 dark:text-gray-400"><%= @user.profile %></span>
             <br>
