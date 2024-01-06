@@ -7,7 +7,7 @@
             <span class="text-sm text-gray-500 dark:text-gray-400"><%= @user.profile %></span>
             <br>
             <div>
-                <%= video_tag @user.play_video.url, controls: true, class: "w-80 h-64" if @user.play_video.present? %>
+                <%= video_tag @user.play_video.url, controls: true, class: "w-full md:w-80 h-64" if @user.play_video.present? %>
             </div>
             <div class="flex mt-4 md:mt-6">
                 <% if current_user == @user %>

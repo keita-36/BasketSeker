@@ -15,9 +15,9 @@
   <header class="h-20 flex items-center justify-between sticky top-0 bg-accent z-30">
     <div class="navbar">
       <div class="flex-1">
-        <a href=#>
+        <%= link_to  root_path do %>
           <%= image_tag 'logo.png', class: 'm-auto w-32 h-32' %>
-        </a>
+        <% end %>
       </div>
       <div class="h-20 flex-none">
         <ul class="menu menu-horizontal px-1">

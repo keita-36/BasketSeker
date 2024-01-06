@@ -12,10 +12,10 @@ class EventsController < ApplicationController
         @messages = Message.where(room_id: @event.room.id)
 
         # このコードは、Google Maps Geocoding API に対して、指定された緯度と経度の書式設定された住所を取得するリクエストを行っています。
-        uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
+        uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}&language=ja")
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        @address = data['results'][0]['formatted_address'] if data['results'].present?
+        @address = data['results'][0]['formatted_address'].sub(/日本、/, '') if data['results'].present?
     end
 
     def create
@@ -34,10 +34,10 @@ class EventsController < ApplicationController
         @event.latitude = params[:lat]
         @event.longitude = params[:lng]
 
-        uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")
+        uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}&language=ja")
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        @address = data['results'][0]['formatted_address'] if data['results'].present?
+        @address = data['results'][0]['formatted_address'].sub(/日本、/, '')  if data['results'].present?
 
     end
 
