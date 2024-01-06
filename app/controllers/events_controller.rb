@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
-        @messages = Message.where(room_id: params[:id])
+        @messages = Message.where(room_id: @event.room.id)
 
         # このコードは、Google Maps Geocoding API に対して、指定された緯度と経度の書式設定された住所を取得するリクエストを行っています。
         uri = URI("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@event.latitude},#{@event.longitude}&key=#{ENV['API_KEY']}")

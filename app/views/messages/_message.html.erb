@@ -1,3 +1,21 @@
-<div class="message <%= message.user == current_user ? 'text-right bg-green-200' : 'text-left bg-gray-200' %> rounded p-3 mb-2 max-w-7/10">
-    <p><%= message.content %></p>
+<div id="messages" class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+    <% if message.user == current_user %>
+        <div class="chat-message mr-96">
+            <div class="flex items-end justify-end">
+                <div class="flex flex-col space-y-2 text-lg max-w-xs mx-2 order-1 items-end">
+                    <div><span class="px-8 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white "><%= message.content %></span></div>
+                </div>
+                <%= image_tag(message.user.avatar.present? ? message.user.avatar.url : "sample.jpg", class: "w-12 h-12  order-1 rounded-full shadow-lg") %>
+            </div>
+        </div>
+    <% else %>
+        <div class="chat-message ml-96">
+            <div class="flex items-end">
+                <div class="flex flex-col space-y-2 text-lg max-w-xs mx-2 order-2 items-start">
+                    <div><span class="px-8 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"><%= message.content %></span></div>
+                </div>
+                <%= image_tag(message.user.avatar.present? ? message.user.avatar.url : "sample.jpg", class: "w-12 h-12  order-1 rounded-full shadow-lg") %>
+            </div>
+        </div>
+    <% end %>
 </div>
