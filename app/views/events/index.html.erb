@@ -10,68 +10,76 @@
         </div>
 
         <br>
-        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10">
+        <div data-tab-target="content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center z-10">
             <% @events.each do |event| %>
-                <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
-                    <div class="card-body">
-                        <h2 class="card-title"><%= event.title %></h2>
-                        <%= render "event_attendances/btn", event: event %>
-                        <p><%= event.user.name %></p>
-                        <p><%= l event.datetime, format: :default %>
-                        <p><%= event.content %></p>
-                        <div class="card-actions justify-end">
-                            <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                <div class="flex justify-center">
+                    <div class="card w-80 h-80 bg-base-100 shadow-xl image-full">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= event.title %></h2>
+                            <%= render "event_attendances/btn", event: event %>
+                            <p><%= event.user.name %></p>
+                            <p><%= l event.datetime, format: :default %>
+                            <p><%= event.content %></p>
+                            <div class="card-actions justify-end">
+                                <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                            </div>
                         </div>
                     </div>
                 </div>
             <% end %>
             <%= paginate @events %>
         </div>
-        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
+        <div data-tab-target="content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
             <% @participating_events.each do |event| %>
-                <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
-                    <div class="card-body">
-                        <h2 class="card-title"><%= event.title %></h2>
-                        <%= render "event_attendances/btn", event: event %>
-                        <p><%= event.user.name %></p>
-                        <p><%= event.datetime %>
-                        <p><%= event.content %></p>
-                        <div class="card-actions justify-end">
-                            <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                <div class="flex justify-center">
+                    <div class="card w-80 h-80 bg-base-100 shadow-xl image-full">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= event.title %></h2>
+                            <%= render "event_attendances/btn", event: event %>
+                            <p><%= event.user.name %></p>
+                            <p><%= event.datetime %>
+                            <p><%= event.content %></p>
+                            <div class="card-actions justify-end">
+                                <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                            </div>
                         </div>
                     </div>
                 </div>
             <% end %>
             <%= paginate @participating_events %>
         </div>
-        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
+        <div data-tab-target="content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center z-10" style="display: none;" >
             <% @favorited_events.each do |event| %>
-                <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
-                    <div class="card-body">
-                        <h2 class="card-title"><%= event.title %></h2>
-                        <%= render "event_attendances/btn", event: event %>
-                        <p><%= event.user.name %></p>
-                        <p><%= event.datetime %>
-                        <p><%= event.content %></p>
-                        <div class="card-actions justify-end">
-                            <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                <div class="flex justify-center">
+                    <div class="card w-80 h-80 bg-base-100 shadow-xl image-full">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= event.title %></h2>
+                            <%= render "event_attendances/btn", event: event %>
+                            <p><%= event.user.name %></p>
+                            <p><%= event.datetime %>
+                            <p><%= event.content %></p>
+                            <div class="card-actions justify-end">
+                                <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                            </div>
                         </div>
                     </div>
                 </div>
             <% end %>
             <%= paginate @favorited_events %>
         </div>
-        <div data-tab-target="content" class="grid grid-cols-3 gap-4 justify-center z-10" style="display: none;">
+        <div data-tab-target="content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center z-10" style="display: none;">
             <% @past_events.each do |event| %>
-                <div class="card w-96 bg-base-100 shadow-xl image-full m-20">
-                    <div class="card-body">
-                        <h2 class="card-title"><%= event.title %></h2>
-                        <%= render "event_attendances/btn", event: event %>
-                        <p><%= event.user.name %></p>
-                        <p><%= event.datetime %>
-                        <p><%= event.content %></p>
-                        <div class="card-actions justify-end">
-                            <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                <div class="flex justify-center">
+                    <div class="card w-80 h-80 bg-base-100 shadow-xl image-full">
+                        <div class="card-body">
+                            <h2 class="card-title"><%= event.title %></h2>
+                            <%= render "event_attendances/btn", event: event %>
+                            <p><%= event.user.name %></p>
+                            <p><%= event.datetime %>
+                            <p><%= event.content %></p>
+                            <div class="card-actions justify-end">
+                                <%= link_to "詳細を見る", event_path(event), class: "btn btn-primary" %>
+                            </div>
                         </div>
                     </div>
                 </div>

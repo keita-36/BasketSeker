@@ -1,9 +1,9 @@
-<div class="bg-white p-4 rounded-lg shadow-md flex justify-between items-center">
+<div class="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center">
     <div>
         <%= notification_form(notification) %>
         <span class="text-sm text-gray-500"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
     </div>
-    <%= link_to "削除", notification_path(notification), data: { turbo_method: :delete }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" %>
+    <%= link_to "削除", notification_path(notification), data: { turbo_method: :delete }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-4 md:mt-0" %>
     <br>
     <% if !@comment.nil? %>
         <p class="text-gray-700 mt-2"><%= @comment %></p>
