@@ -20,12 +20,14 @@ const appRoom = consumer.subscriptions.create("RoomChannel", {
   }
 });
 
-let chatInput = document.getElementById('chat-input');
-
-if (chatInput) {
-  chatInput.removeEventListener("keyup", handleKeyUp);
-  chatInput.addEventListener("keyup", handleKeyUp);
-}
+document.addEventListener('turbo:load', () => {
+  console.log('DOMContentLoaded');
+  let chatInput = document.getElementById('chat-input');
+  if (chatInput) {
+    chatInput.removeEventListener("keyup", handleKeyUp);
+    chatInput.addEventListener("keyup", handleKeyUp);
+  }
+});
 
 function handleKeyUp(e) {
   if (e.key === 'Enter' && e.target.value.trim() !== '') {
@@ -35,3 +37,4 @@ function handleKeyUp(e) {
     e.preventDefault();
   }
 }
+
