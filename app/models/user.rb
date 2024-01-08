@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   #gem devise
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable, :recoverable
   
 
   def participating_in?(event)
