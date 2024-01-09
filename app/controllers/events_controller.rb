@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    before_action :authenticate_user!, only: %i[index new create edit update destroy]
 
     def index
         @events = Event.where('datetime > ?', DateTime.now).includes(:user).order(created_at: :desc).page(params[:page])
