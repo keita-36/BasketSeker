@@ -1,4 +1,6 @@
 class MatchResultsController < ApplicationController
+    before_action :authenticate_user!, only: %i[new create index]
+
     def new
         @match_result = MatchResult.new
         @event = Event.find(params[:event_id])
@@ -14,7 +16,7 @@ class MatchResultsController < ApplicationController
             @match_result.user_2_id = user_id
             @match_result.winner_id = result == 'WIN' ? current_user.id : user_id
             if @match_result.save
-                @result_saved = true
+                redirect_to event_path(@event) 
             else
                 render :new and return
             end
