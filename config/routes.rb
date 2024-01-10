@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   }
 
   root "static_pages#top"
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'terms', to: 'static_pages#terms'
 
   resources :events do
     resources :match_results, only: [:create, :destroy, :new]
