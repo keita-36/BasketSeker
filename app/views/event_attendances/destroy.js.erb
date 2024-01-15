@@ -1,2 +1,6 @@
 document.getElementById('js-bookmark-button-for-event-<%= @event.id %>').style.color = 'none';
-console.log('こんにちは');
+
+<% if current_user.unbookmarked?(@event) %>
+    console.log('検討中を解除しました。');
+    $('#flash-messages').html('<div class="alert alert-success">検討中を解除しました。</div>');
+<% end %>

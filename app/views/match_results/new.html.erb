@@ -2,7 +2,7 @@
 <br>
 <div class="flex justify-center">
     <div class="w-full max-w-xl">
-        <%= form_with model: [@event, @match_result], local: true, html: { class: "bg-white shadow-md rounded px-8 pt-10 pb-10 mb-4" } do |f| %>
+        <%= form_with model: [@event, @match_result], local: true, data: { turbo: false }, html: { class: "bg-white shadow-md rounded px-8 pt-10 pb-10 mb-4" } do |f| %>
             <% @users.each do |user| %>
                 <% if !MatchResult.result_exists?(@current_user, user, @event) %>
                     <%= f.label "対 #{user.name}", class: "block text-gray-700 text-2xl font-bold" %><br>

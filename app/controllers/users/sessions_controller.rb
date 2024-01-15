@@ -5,7 +5,6 @@ class Users::SessionsController < Devise::SessionsController
     super do |resource|
       if resource.valid?
         cookies.signed[:user_id] = resource.id
-        logger.debug "User ID from cookies: #{cookies.signed[:user_id]}"
       end
     end
   end

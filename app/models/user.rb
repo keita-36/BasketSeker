@@ -44,6 +44,7 @@ class User < ApplicationRecord
     event_attendances_events.destroy(event)
   end
 
+  # この関数は、イベントがユーザーによってブックマークされているかどうかを確認します。
   def bookmark?(event)
     event_attendances_events.include?(event)
   end
@@ -56,5 +57,11 @@ class User < ApplicationRecord
   # ユーザーがお気に入りに登録したイベントを返します。
   def favorited_events
     event_attendances_events
+  end
+
+
+  # テーブルにイベントが存在しないかどうかを確認することで、イベントのブックマークが解除されているかどうかを確認します。
+  def unbookmarked?(event)
+    !event_attendances_events.exists?(event_id: event.id)
   end
 end

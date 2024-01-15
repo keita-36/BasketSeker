@@ -1,2 +1,7 @@
 document.getElementById('js-bookmark-button-for-event-<%= @event.id %>').style.color = 'yellow';
-console.log('こんにちは');
+
+<%# $('#added-message').html("<%= j(render 'shared/flash_message') %>
+
+<% flash.each do |type, message| %>
+    $("#added-message").html('<p class="px-4 py-2 rounded-md bg-green-100 border-green-200 text-green-700"><%= message %></p>')
+<% end %>

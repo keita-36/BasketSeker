@@ -21,7 +21,6 @@ const appRoom = consumer.subscriptions.create("RoomChannel", {
 });
 
 document.addEventListener('turbo:load', () => {
-  console.log('DOMContentLoaded');
   let chatInput = document.getElementById('chat-input');
   if (chatInput) {
     chatInput.removeEventListener("keyup", handleKeyUp);
