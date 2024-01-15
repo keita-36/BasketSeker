@@ -4,7 +4,7 @@
             <h1 class="ext-xl text-gray-800 font-bold sm:text-3xl dark:text-white">イベント作成</h1>
         </div>
         <div class="mt-5 p-4 relative z-10 bg-white border rounded-xl sm:mt-10 md:p-10 dark:bg-gray-800 dark:border-gray-700">
-            <%= form_with model: @event, class: "space-y-4 text-center" do |f| %>
+            <%= form_with model: @event, local: true, data: { turbo: false }, class: "space-y-4 text-center" do |f| %>
                 <div class="field mb-4 sm:mb-8">
                     <%= f.label :タイトル, class: "block mb-2 text-sm font-black dark:text-white text-left" %>
                     <%= f.text_field :title, class: "py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" %>

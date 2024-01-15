@@ -2,3 +2,14 @@ ja:
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"
+  activerecord:
+    attributes:
+      event:
+        datetime: "日時"
+        title: "タイトル"
+    errors:
+      models:
+        event:
+          attributes:
+            datetime:
+              blank: "を入力してください"

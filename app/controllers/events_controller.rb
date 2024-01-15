@@ -20,14 +20,18 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = current_user.events.build(event_params)
+        @event = current_user.events.new(event_params)
         if @event.save
             UserEvent.create(user: current_user, event: @event)
             Room.create!(event: @event)
-            redirect_to events_path
+            redirect_to events_path, flash: { success: 'イベントを作成しました' }
         else
+            # 全てのバリデーションエラーメッセージを取得
+            all_errors = @event.errors.full_messages
+            # フラッシュメッセージにエラーを設定
+            flash.now[:danger] = all_errors.join(", ")
             render :new
-        end
+            end
     end
 
     def new
@@ -45,7 +49,7 @@ class EventsController < ApplicationController
     def update
         @event = current_user.events.find(params[:id])
         if @event.update(event_params)
-            redirect_to @event
+            redirect_to @event, flash: { success: 'イベントを更新しました' }
         else
             render :edit
         end

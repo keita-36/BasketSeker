@@ -16,12 +16,11 @@ class MatchResultsController < ApplicationController
             @match_result.user_2_id = user_id
             @match_result.winner_id = result == 'WIN' ? current_user.id : user_id
             if @match_result.save
-                redirect_to event_path(@event) 
+                redirect_to event_path(@event), flash: { success: '対戦結果を登録しました' }
             else
                 render :new and return
             end
         end
-        redirect_to event_path(@event)
     end
 
     def index

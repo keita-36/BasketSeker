@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     before_action :set_check_notifications
-
+    
+    add_flash_types :success, :info, :warning, :danger
+    
     private
 
     def set_check_notifications
