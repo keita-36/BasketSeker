@@ -1,12 +1,12 @@
 require 'csv'
 require 'open-uri'
-API_KEY = ENV['API_KEY']
+APIKEY = ENV['APIKEY']
 
 namespace :fetch_parks do
   desc 'Fetch and save park details'
   task :get_and_save_details => :environment do
     def get_place_id(address)
-      client = GooglePlaces::Client.new(API_KEY)
+      client = GooglePlaces::Client.new(APIKEY)
       spot = client.spots_by_query(address).first
       spot.place_id if spot
     end
@@ -24,7 +24,7 @@ namespace :fetch_parks do
         place_detail_query = URI.encode_www_form(
           place_id: place_id,
           language: 'ja',
-          key: API_KEY
+          key: APIKEY
         )
         place_detail_url = "https://maps.googleapis.com/maps/api/place/details/json?#{place_detail_query}"
         place_detail_page = URI.open(place_detail_url).read

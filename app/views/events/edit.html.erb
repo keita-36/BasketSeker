@@ -16,10 +16,10 @@
 <% end %>
 <p>Address: <span id="address_text"><%= @address %></span></p>
 
-<div id='new-map' class='h-96 w-full relative mb-20'></div>
+<div id='edit-map' class='h-96 w-full relative mb-20'></div>
 
 <script>
-    let newMap;
+    let editMap;
     let marker;
 
     function initMap() {
@@ -27,7 +27,7 @@
         let LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
 
         // 取得した位置情報を中心に表示
-        newMap = new google.maps.Map(document.getElementById('new-map'), {
+        editMap = new google.maps.Map(document.getElementById('edit-map'), {
             center: LatLng,
             zoom: 15,
             gestureHandling: 'cooperative',
@@ -38,7 +38,7 @@
             }
         });
 
-        newMap.addListener('click', function(e) {
+        editMap.addListener('click', function(e) {
             addMarker(e.latLng);
             document.getElementById('event_latitude').value = e.latLng.lat();
             document.getElementById('event_longitude').value = e.latLng.lng();
@@ -74,10 +74,10 @@
         // 新しいマーカーを作成
         marker = new google.maps.Marker({
             position: location,
-            map: newMap
+            map: editMap
         });
     }
 </script>
 
 <!-- Google Maps APIのスクリプト読み込み -->
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['APIKEY'] %>&callback=initMap" async defer></script>

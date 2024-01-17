@@ -61,16 +61,16 @@
     function initMap() {
         const LatLng = new google.maps.LatLng( <%= @event.latitude %>, <%= @event.longitude %>);
 
-        const map = new google.maps.Map(document.getElementById('show-map'), {
+        const showMap = new google.maps.Map(document.getElementById('show-map'), {
             center: LatLng,
             zoom: 15,
         });
 
         const marker = new google.maps.Marker({
             position: LatLng,
-            map: map,
+            map: showMap,
         });
     }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['APIKEY'] %>&callback=initMap" async defer></script>

@@ -13,6 +13,7 @@ module ApplicationCable
           verified_user
         else
           reject_unauthorized_connection
+          logger.debug "User ID from uncookies: #{cookies.signed[:user_id]}"
         end
       end
   end
