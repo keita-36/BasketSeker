@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: BasketSeker_production
-  username: BasketSeker
-  password: <%= ENV["BASKETSEKER_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
