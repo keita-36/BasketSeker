@@ -18,26 +18,25 @@
             </div>
         </div>
     </div>
-
-    <div class="flex flex-col justify-center items-center text-center row-start-2  lg:col-start-8 lg:col-end-10 lg:row-start-1">
+    <div class="flex flex-col justify-between items-center text-center row-start-2 lg:col-start-8 lg:col-end-10 lg:row-start-1 h-full">
         <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:w-full">
             <p>作成者</p>
             <p><%= link_to @event.user.name, profile_path(@event.user), class: "text-blue-500 underline" %></p>
         </div>
-        <br>
         <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <p>参加予定人数</p>
             <p><%= @event.user_events.count %></p>
             <% if current_user == @event.user %>
-                <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
-                <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
+                <div class="flex justify-center space-x-2 mx-auto">
+                    <%= button_to '編集', edit_event_path(@event), method: :get, class: 'btn btn-primary' %>
+                    <%= button_to '削除', event_path(@event), method: :delete, class: 'btn btn-danger' %>
+                </div>
             <% elsif current_user.participating_in?(@event) %>
                 <%= button_to 'キャンセル', event_user_event_path(@event), method: :delete, class: 'btn btn-danger' %>
             <% else %>
                 <%= button_to '参加する', event_user_events_path(@event), method: :post, class: 'btn btn-primary' %>
             <% end %>
         </div>
-        <br>
         <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <% if current_user.participating_in?(@event) %>
                 <p>結果入力</p>
