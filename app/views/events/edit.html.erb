@@ -20,7 +20,7 @@
                 <%= f.hidden_field :latitude %>
                 <%= f.hidden_field :longitude %>
                 <p class="text-left"><span class="font-black text-sm">住所(ピンを合わせてください)</span> 
-                <div id='edit-map' class='h-96 max-w-7xl mx-auto relative mb-40' data-latitude="<%= @event.latitude %>" data-longitude="<%= @event.longitude %>"></div>
+                <div id='edit-map' class='h-96 max-w-7xl mx-auto relative mb-40'></div>
                 <div class="actions mt-6 grid">
                     <%= f.submit class: "w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" %>
                 </div>
@@ -29,6 +29,66 @@
     </div>
 </div>
 
-<%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+<script>
+    let editMap;
+    let marker;
+
+    function initMap() {
+        // マップの初期化処理
+        let LatLng = new google.maps.LatLng(<%= @event.latitude %>, <%= @event.longitude %>);
+
+        // 取得した位置情報を中心に表示
+        editMap = new google.maps.Map(document.getElementById('edit-map'), {
+            center: LatLng,
+            zoom: 15,
+            gestureHandling: 'cooperative',
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                position: google.maps.ControlPosition.TOP_LEFT,
+                mapTypeIds: ['roadmap', 'terrain']
+            }
+        });
+
+        editMap.addListener('click', function(e) {
+            addMarker(e.latLng);
+            document.getElementById('event_latitude').value = e.latLng.lat();
+            document.getElementById('event_longitude').value = e.latLng.lng();
+            document.getElementById('latitude_text').innerText = e.latLng.lat();
+            document.getElementById('longitude_text').innerText = e.latLng.lng();
+
+            // 逆ジオコーディングを行う
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ location: e.latLng }, function(results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        document.getElementById('address_text').innerText = results[0].formatted_address;
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        });
+
+        addMarker({
+            lat: <%= @event.latitude %>,
+            lng: <%= @event.longitude %>,
+        });
+    }
+
+    function addMarker(location) {
+        // 既存のマーカーを削除
+        if (marker) {
+            marker.setMap(null);
+        }
+        // 新しいマーカーを作成
+        marker = new google.maps.Marker({
+            position: location,
+            map: editMap
+        });
+    }
+</script>
+
 <!-- Google Maps APIのスクリプト読み込み -->
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['APIKEY'] %>&callback=initMap" async defer></script>
