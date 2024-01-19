@@ -57,12 +57,14 @@ BasketSeker
   - devise
   - google_places
   - kaminari
+  - carriewave
 - API
   - Google Maps JavaScript API
   - Google Places API
   - Google Geolocation API
 - フロントエンド
   - Tailwind CSS
+  - Hotwire
 - インフラ
   - Fly.io
 
